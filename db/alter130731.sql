@@ -1,0 +1,16 @@
+/*DROP TABLE IF EXISTS `Format`;*/
+CREATE TABLE `Format` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Format` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Format`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*DROP TABLE IF EXISTS `ThemaFormat`;*/
+CREATE TABLE `ThemaFormat` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ThemaID` int(11) NOT NULL DEFAULT '1',
+  `FormatID` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (ThemaID,FormatID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
