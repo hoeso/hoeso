@@ -10,20 +10,50 @@ INSERT INTO `Ausschreibung` VALUES (1,2290,'80336');
 UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Inhalt`;
-CREATE TABLE `Inhalt` (
+DROP TABLE IF EXISTS `LV`;
+CREATE TABLE `LV` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `AusschreibungID` int(11) NOT NULL DEFAULT '1',
-  `Spalte` int(11) NOT NULL default '0',
-  `Zeile` int(11) NOT NULL default '0',
-  `Inhalt` text,
+  `Status` enum('unfertig','Draft','Auktion') NOT NULL default 'unfertig',
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+LOCK TABLES `LV` WRITE;
+INSERT INTO `LV` VALUES (1,1,'unfertig');
+UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Spalte`;
 CREATE TABLE `Spalte` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `AusschreibungID` int(11) NOT NULL DEFAULT '1',
+  `LVID` int(11) NOT NULL DEFAULT '1',
   `Nr` int(11) NOT NULL default '0',
   `Titel` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`LVID`,`Nr`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Zeile`;
+CREATE TABLE `Zeile` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LVID` int(11) NOT NULL DEFAULT '1',
+  `Nr` int(11) NOT NULL default '0',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`LVID`,`Nr`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Zelle`;
+CREATE TABLE `Zelle` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SpalteID` int(11) NOT NULL DEFAULT '1',
+  `ZeileID` int(11) NOT NULL DEFAULT '1',
+  `Inhalt` text,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`SpalteID`,`ZeileID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Paragraph`;
+CREATE TABLE `Paragraph` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ZeileID` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`ZeileID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
