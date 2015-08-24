@@ -34,7 +34,7 @@ CREATE TABLE `Angebot` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX2` (`EDVID`,`Position`),
   UNIQUE KEY `IDX` (`EDVID`,`Section`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `Angebot` (
 
 LOCK TABLES `Angebot` WRITE;
 /*!40000 ALTER TABLE `Angebot` DISABLE KEYS */;
-INSERT INTO `Angebot` VALUES (1,2,'','','0','1',0.00,0.00),(2,1,'Liste aller Notebooks','Es wird eine Liste aller Notebooks gepflegt, die im Aussendienst im Einsatz sind. Hierbei werden angegeben\r\n\\begin{itemize}\r\n\\item Version des Betriebssystems\r\n\\item Mitarbeiter (der das Notebook benutzt)\r\n\\end{itemize}\r\nEs handelt sich dabei um diejenigen GerÃ¤te, mit denen die geleisteten Stunden eingegeben und mit dem Server synchronsiert werden.','6','2',0.00,0.00),(3,1,'Mitarbeiter','Es wird eine Liste aller Mitarbeiter gepflegt unter Nennung von\r\n\\begin{itemize}\r\n\\item Name, Vorname\r\n\\item Wohnort-Koordinaten\r\n\\item Stundensatz\r\n\\end{itemize}\r\nDie Wohnort-Koordinaten werden hinterlegt, um die km-Entfernung zu seinen Einsatzorten berechnen zu kÃ¶nnen.','8','1',0.00,0.00),(4,1,'Bereich','Die vier genannten Firmen-Bereiche Kommunikationstechnik, Freileitungsbau, Energie Erz. & Effizienz und Service & Wartung werden in den Formularen als Auswahl zur VerfÃ¼gung gestellt.','3','3',0.00,0.00),(5,1,'Region','Es wird eine Liste der Regionen gepflegt unter Nennung von\r\n\\begin{itemize}\r\n\\item Region\r\n\\item KostentrÃ¤ger (1-stellig)\r\n\\item Kostenstelle (2-stellig)\r\n\\end{itemize}','6','4',0.00,0.00),(6,1,'Einsatz des Mitarbeiters','In dieser Liste werden alle potentiellen EinsÃ¤tze eines Mitarbeiters hinterlegt. Sie enthÃ¤lt BezÃ¼ge zur\r\n\\begin{itemize}\r\n\\item Region\r\n\\item Einsatz\r\n\\item Mitarbeiter\r\n\\end{itemize}\r\nAuÃŸerdem kann sie enthalten:\r\n\\begin{itemize}\r\n\\item Koordinaten des Einsatzortes\r\n\\item AuslÃ¶se des Mitarbeiters\r\n\\end{itemize}\r\nSind keine Koordinaten angegeben, so gibt es kein km-Geld.\r\n\\\\Ist die AuslÃ¶se mit 0 EUR angegeben, so fÃ¤llt keine AuslÃ¶se an bei EinsÃ¤tzen des MA.','12','6',0.00,0.00),(7,1,'Einsatz','Als Einsatz wird der Ort des MA-Einsatzes verstanden. Je nachdem, ob es sich um einen KostentrÃ¤ger handelt, ist es eine Baustelle, im Falle einer Kostenstelle ein Lager, eine Schulung etc.\r\nEs wird eine Liste aller mÃ¶glichen EinsÃ¤tze gepflegt unter Nennung von\r\n\\begin{itemize}\r\n\\item Einsatz (Name der Baustelle, der Schulung etc.)\r\n\\item Nummer (2-stellig)\r\n\\item KT oder KS (KostenstrÃ¤ger o. -stelle)\r\n\\item Art (1-stellig)\r\n\\end{itemize}\r\nMit Nummer ist die des Projekts, des Kunden, der Kostenstelle gemeint. Es ist die 1-stellige Nummer, die Teil der KostentrÃ¤ger- bzw. Kostenstellen-Nummer wird.\r\n\\\\Bei der 1-stelligen Art handelt es sich im Fall von KostentrÃ¤gern um die Auftragsart, im Falle von Kostenstellen um die einleitende 1-stellige Ziffer.','12','5',0.00,0.00),(8,1,'Einsatzzeiten','Mit Bezug auf die hinterlegten mÃ¶glichen EinsÃ¤tze eines MA kÃ¶nnen hierfÃ¼r Zeiten hinterlegt werden. Diese Zeiten kÃ¶nnen offline auf einem Notebook am Ort des Einsatzes eingegeben werden oder auch online an jedem Arbeitsplatz, der Zugang zum Server hat. Im Falle einer Offline-Eingabe sind die Informationen mit dem Server zu synchronisieren.','60','7',0.00,0.00),(9,1,'Soll-Ist Abgleich','Zu jedem Einsatz kann das dafÃ¼r geplante Budget in EUR hinterlegt werden. Dieser Betrag wird gegengerechnet mit dem angegebenen Zeiten aller darauf eingesetzten MA unter Summierung aller StundensÃ¤tze, AuslÃ¶sen und km-Gelder.','60','8',0.00,0.00),(10,1,'Wochenbericht','Der Server nimmt die Angaben Ã¼ber die Einsatzzeiten entgegen und erstellt daraus anhand der sonst noch hinterlegten, oben beschriebenen Angaben einen Wochenbericht. Die erforderliche Form des Wochenberichtes ist noch abzustimmen.','24','9',0.00,0.00),(14,1,'Ãœbertragung ins PDS','Ob das PDS Ã¼ber eine Import-Schnittstelle zum automatisierten Ãœbertragen der Wochenberichte verfÃ¼gt, ist noch zu klÃ¤ren.','0','11',0.00,0.00),(11,3,'Download','109 MB von apachefriends.org/de herunterladen.','0','1',0.00,0.00),(12,3,'Installation','Es werden nur die Komponten mysql, php, apache installiert ins voreingestellte Verzeichnis C:\\xampplite .\r\n\\\\\\\\Apache2 Ports, Listen-Directive setzen in C:\\xampplite\\apache\\conf\\httpd.conf','0','2',0.00,0.00),(13,1,'Abnahme durch Controlling','Der generierte Wochenbericht wird vom Controlling geprÃ¼ft. Erst nach erfolgreicher Abnahme wird er fÃ¼r das PDS freigegeben.','12','10',0.00,0.00);
+INSERT INTO `Angebot` VALUES (1,2,'','','0','1',0.00,0.00),(2,1,'Liste aller Notebooks','Es wird eine Liste aller Notebooks gepflegt, die im Aussendienst im Einsatz sind. Hierbei werden angegeben\r\n\\begin{itemize}\r\n\\item Version des Betriebssystems\r\n\\item Mitarbeiter (der das Notebook benutzt)\r\n\\end{itemize}\r\nEs handelt sich dabei um diejenigen GerÃ¤te, mit denen die geleisteten Stunden eingegeben und mit dem Server synchronisiert werden.','6','2',0.00,0.00),(3,1,'Mitarbeiter','Es wird eine Liste aller Mitarbeiter gepflegt unter Nennung von\r\n\\begin{itemize}\r\n\\item Name, Vorname\r\n\\item Wohnort-Koordinaten\r\n\\item Stundensatz\r\n\\end{itemize}\r\nDie Wohnort-Koordinaten werden hinterlegt, um die km-Entfernung zu seinen Einsatzorten berechnen zu kÃ¶nnen.','8','1',0.00,0.00),(4,1,'Bereich','Die vier genannten Firmen-Bereiche Kommunikationstechnik, Freileitungsbau, Energie Erz. & Effizienz und Service & Wartung werden in den Formularen als Auswahl zur VerfÃ¼gung gestellt.','3','3',0.00,0.00),(5,1,'Region','Es wird eine Liste der Regionen gepflegt unter Nennung von\r\n\\begin{itemize}\r\n\\item Region\r\n\\item KostentrÃ¤ger (1-stellig)\r\n\\item Kostenstelle (2-stellig)\r\n\\end{itemize}','6','4',0.00,0.00),(6,1,'Einsatz des Mitarbeiters','In dieser Liste werden alle potentiellen EinsÃ¤tze eines Mitarbeiters hinterlegt. Sie enthÃ¤lt BezÃ¼ge zur\r\n\\begin{itemize}\r\n\\item Region\r\n\\item Einsatz\r\n\\item Mitarbeiter\r\n\\end{itemize}\r\nAuÃŸerdem kann sie enthalten:\r\n\\begin{itemize}\r\n\\item Koordinaten des Einsatzortes\r\n\\item AuslÃ¶se des Mitarbeiters\r\n\\end{itemize}\r\nSind keine Koordinaten angegeben, so gibt es kein km-Geld.\r\n\\\\Ist die AuslÃ¶se mit 0 EUR angegeben, so fÃ¤llt keine AuslÃ¶se an bei EinsÃ¤tzen des MA.','12','7',0.00,0.00),(7,1,'Einsatz','Als Einsatz wird der Ort des MA-Einsatzes verstanden. Der Einsatz ist im Falle eines KostentrÃ¤gers auf einer Baustelle und im Falle einer Kostenstelle z.B. in einem Lager oder auf einer Schulung e.a.\r\nEs wird eine Liste aller mÃ¶glichen EinsÃ¤tze gepflegt unter Nennung von\r\n\\begin{itemize}\r\n\\item Einsatz (Name der Baustelle, der Schulung etc.)\r\n\\item Nummer (2-stellig)\r\n\\item KT oder KS (KostenstrÃ¤ger o. -stelle)\r\n\\item Art (1-stellig)\r\n\\end{itemize}\r\nMit Nummer ist die des Projekts bzw. des Kunden gemeint. Es ist die 2-stellige Nummer, die Teil der KostentrÃ¤ger- bzw. Kostenstellen-Nummer wird.\r\n\\\\Bei der 1-stelligen Art handelt es sich im Fall von KostentrÃ¤gern um die Auftragsart, im Falle von Kostenstellen um die einleitende 1-stellige Ziffer.','12','5',0.00,0.00),(8,1,'Einsatzzeiten','Mit Bezug auf die hinterlegten mÃ¶glichen EinsÃ¤tze eines MA kÃ¶nnen hierfÃ¼r Zeiten hinterlegt werden. Diese Zeiten kÃ¶nnen offline auf einem Notebook am Ort des Einsatzes eingegeben werden oder auch online an jedem Arbeitsplatz, der Zugang zum Server hat. Im Falle einer Offline-Eingabe sind die Informationen mit dem Server zu synchronisieren.','60','8',0.00,0.00),(9,1,'Soll-Ist Abgleich','Zu jedem Einsatz kann das dafÃ¼r geplante Budget in EUR hinterlegt werden. Dieser Betrag wird gegengerechnet mit dem angegebenen Zeiten aller darauf eingesetzten MA unter Summierung aller StundensÃ¤tze, AuslÃ¶sen und km-Gelder.','60','9',0.00,0.00),(10,1,'Wochenbericht','Der Server nimmt die Angaben Ã¼ber die Einsatzzeiten entgegen und erstellt daraus anhand der sonst noch hinterlegten, oben beschriebenen Angaben einen Wochenbericht. Die erforderliche Form des Wochenberichtes ist noch abzustimmen.','24','10',0.00,0.00),(14,1,'Ãœbertragung ins PDS','Ob das PDS Ã¼ber eine Import-Schnittstelle zum automatisierten Ãœbertragen der Wochenberichte verfÃ¼gt, ist noch zu klÃ¤ren.','0','12',0.00,0.00),(11,3,'Download','109 MB von apachefriends.org/de herunterladen.','0','1',0.00,0.00),(12,3,'Installation','Es werden nur die Komponten mysql, php, apache installiert ins voreingestellte Verzeichnis C:\\xampplite .\r\n\\\\\\\\Apache2 Ports, Listen-Directive setzen in C:\\xampplite\\apache\\conf\\httpd.conf','0','2',0.00,0.00),(13,1,'Abnahme durch Controlling','Der generierte Wochenbericht wird vom Controlling geprÃ¼ft. Erst nach erfolgreicher Abnahme wird er fÃ¼r das PDS freigegeben.','12','11',0.00,0.00),(15,1,'Laufende Nummer KT','In Kombination mit dem Einsatzjahr werden die bei der Auftragsnummer an 7., 8. + 9. Stelle fortlaufenden Nummern  des KT gepflegt, so dass eine eindeutige Verwendung garantiert ist.','6','6',0.00,0.00),(16,1,'Wartung','FÃ¼r die monatliche Wartung, welche eine HochverfÃ¼gbarkeit des Server, einen fehlerfreien Ablauf der Programme und des Datenaustausches und eine Hotline bei Fragen oder technischen Problemen garantieren soll, fallen an:\r\n\\begin{itemize}\r\n\\item Fixum fÃ¼r den Serverbetrieb in HÃ¶he von 59,- EUR mtl. zzgl. MWSt. an.\r\n\\end{itemize}\r\nDesweiteren kann eine der beiden Alternativen gewÃ¤hlt werden:\r\n\\begin{itemize}\r\n\\item 1,99 EUR zzgl. MWSt. pro abgenommenem Wochenbericht\r\n\\item Monatliche fixe Pauschale Ã¼ber 799 EUR zzgl. MWSt.\r\n\\end{itemize}','0','13',0.00,0.00);
 /*!40000 ALTER TABLE `Angebot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,7 +180,7 @@ CREATE TABLE `EDV` (
 
 LOCK TABLES `EDV` WRITE;
 /*!40000 ALTER TABLE `EDV` DISABLE KEYS */;
-INSERT INTO `EDV` VALUES (1,'Automatisierte Wochenberichte','Die Angabe der Wochenarbeitszeiten der Bauleiter und Monteure auf den Baustellen soll dort offline auf Notebooks mÃ¶glich sein und mit einem zentralen Server synchronisiert werden. Auf den Server greift auch der Innendienst zu, kontrolliert die Angaben des AuÃŸendienstes und sichtet die daraus resultierenden Wochenberichte, deren Inhalt nach Abnahme ins PDS-System Ã¼berstellt wird.',NULL,NULL,'nein','einfach','nein','nein',NULL,'nein',NULL),(3,'XAMPP Installation','Technische Doku der Installation unter Windows8.',NULL,NULL,'nein','einfach','nein','nein',NULL,'nein',NULL);
+INSERT INTO `EDV` VALUES (1,'Automatisierte Wochenberichte','Die Angabe der Wochenarbeitszeiten der Bauleiter und Monteure auf den Baustellen soll dort offline auf Notebooks mÃ¶glich sein und mit einem zentralen Server synchronisiert werden. Auf den Server greift auch der Innendienst zu, kontrolliert die Angaben des AuÃŸendienstes und sichtet die daraus resultierenden Wochenberichte, deren Inhalt nach Abnahme ins PDS-System Ã¼berstellt wird.','2015-08-25',NULL,'nein','einfach','nein','nein',NULL,'nein',NULL),(3,'XAMPP Installation','Technische Doku der Installation unter Windows8.',NULL,NULL,'nein','einfach','nein','nein',NULL,'nein',NULL);
 /*!40000 ALTER TABLE `EDV` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,7 +328,7 @@ CREATE TABLE `Stundensatz` (
   `Stundensatz` decimal(8,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`ZeitstempelID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -337,6 +337,7 @@ CREATE TABLE `Stundensatz` (
 
 LOCK TABLES `Stundensatz` WRITE;
 /*!40000 ALTER TABLE `Stundensatz` DISABLE KEYS */;
+INSERT INTO `Stundensatz` VALUES (3,42,59.00);
 /*!40000 ALTER TABLE `Stundensatz` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,7 +353,7 @@ CREATE TABLE `Zeitstempel` (
   `Datum` date DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Zeitstempel` (`Datum`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,6 +362,7 @@ CREATE TABLE `Zeitstempel` (
 
 LOCK TABLES `Zeitstempel` WRITE;
 /*!40000 ALTER TABLE `Zeitstempel` DISABLE KEYS */;
+INSERT INTO `Zeitstempel` VALUES (42,'2015-01-01');
 /*!40000 ALTER TABLE `Zeitstempel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -373,4 +375,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-04 19:12:51
+-- Dump completed on 2015-08-24 16:58:14
