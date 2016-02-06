@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.28, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.47, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: cfs
 -- ------------------------------------------------------
--- Server version	5.6.28-1
+-- Server version	5.5.47-0+deb8u1-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,7 +27,7 @@ CREATE TABLE `Beziehung` (
   `Beziehung` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Beziehung`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,23 +36,10 @@ CREATE TABLE `Beziehung` (
 
 LOCK TABLES `Beziehung` WRITE;
 /*!40000 ALTER TABLE `Beziehung` DISABLE KEYS */;
-INSERT INTO `Beziehung` VALUES (1,'Vater'),(2,'Mutter'),(3,'Tochter'),(4,'Sohn'),(5,'Neffe'),(6,'Nichte'),(7,'Tante'),(8,'Onkel'),(9,'Client');
+INSERT INTO `Beziehung` VALUES (1,'Vater'),(2,'Mutter'),(3,'Tochter'),(4,'Sohn'),(5,'Neffe'),(6,'Nichte'),(7,'Tante'),(8,'Onkel'),(9,'Client'),(10,'Enkel'),(11,'Enkelin');
 /*!40000 ALTER TABLE `Beziehung` ENABLE KEYS */;
 UNLOCK TABLES;
 
-DROP TABLE IF EXISTS `Person`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Person` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ClientID` int(11) NOT NULL DEFAULT '1',
-  `BeziehungID` int(11) NOT NULL DEFAULT '1',
-  `Name` varchar(80) DEFAULT NULL,
-  `Vorname` varchar(40) DEFAULT NULL,
-  `Telefon` varchar(255) DEFAULT '',
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`ClientID`,BeziehungID)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 --
 -- Table structure for table `Client`
 --
@@ -133,6 +120,86 @@ LOCK TABLES `ClientBeziehung` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Person`
+--
+
+DROP TABLE IF EXISTS `Person`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Person` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ClientID` int(11) NOT NULL DEFAULT '1',
+  `BeziehungID` int(11) NOT NULL DEFAULT '1',
+  `Name` varchar(80) DEFAULT NULL,
+  `Vorname` varchar(40) DEFAULT NULL,
+  `Telefon` varchar(255) DEFAULT '',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`ClientID`,`BeziehungID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Person`
+--
+
+LOCK TABLES `Person` WRITE;
+/*!40000 ALTER TABLE `Person` DISABLE KEYS */;
+INSERT INTO `Person` VALUES (1,1,3,'Faber','Christine','089/1'),(2,1,10,'Johann','HÃ¶rmann','089/338794');
+/*!40000 ALTER TABLE `Person` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PersonRecht`
+--
+
+DROP TABLE IF EXISTS `PersonRecht`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PersonRecht` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `PersonID` int(11) NOT NULL DEFAULT '1',
+  `RechtID` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`PersonID`,`RechtID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PersonRecht`
+--
+
+LOCK TABLES `PersonRecht` WRITE;
+/*!40000 ALTER TABLE `PersonRecht` DISABLE KEYS */;
+INSERT INTO `PersonRecht` VALUES (1,2,1),(2,1,3);
+/*!40000 ALTER TABLE `PersonRecht` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Recht`
+--
+
+DROP TABLE IF EXISTS `Recht`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Recht` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Recht` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Recht`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Recht`
+--
+
+LOCK TABLES `Recht` WRITE;
+/*!40000 ALTER TABLE `Recht` DISABLE KEYS */;
+INSERT INTO `Recht` VALUES (1,'nicht bevollmÃ¤chtigt'),(2,'informationsberechtigt'),(3,'Entbindung Schweigepflicht');
+/*!40000 ALTER TABLE `Recht` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Zeitstempel`
 --
 
@@ -166,4 +233,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-06 11:43:58
+-- Dump completed on 2016-02-06 13:37:36
