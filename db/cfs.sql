@@ -40,6 +40,19 @@ INSERT INTO `Beziehung` VALUES (1,'Vater'),(2,'Mutter'),(3,'Tochter'),(4,'Sohn')
 /*!40000 ALTER TABLE `Beziehung` ENABLE KEYS */;
 UNLOCK TABLES;
 
+DROP TABLE IF EXISTS `Person`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Person` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ClientID` int(11) NOT NULL DEFAULT '1',
+  `BeziehungID` int(11) NOT NULL DEFAULT '1',
+  `Name` varchar(80) DEFAULT NULL,
+  `Vorname` varchar(40) DEFAULT NULL,
+  `Telefon` varchar(255) DEFAULT '',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`ClientID`,BeziehungID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 --
 -- Table structure for table `Client`
 --
