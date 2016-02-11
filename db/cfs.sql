@@ -128,13 +128,11 @@ DROP TABLE IF EXISTS `Person`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Person` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ClientID` int(11) NOT NULL DEFAULT '1',
-  `BeziehungID` int(11) NOT NULL DEFAULT '1',
   `Name` varchar(80) DEFAULT NULL,
   `Vorname` varchar(40) DEFAULT NULL,
   `Telefon` varchar(255) DEFAULT '',
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`ClientID`,`BeziehungID`)
+  PRIMARY KEY (`ID`)
+  /* UNIQUE KEY `IDX` (Name, Vorname, Telefon) */
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -144,7 +142,7 @@ CREATE TABLE `Person` (
 
 LOCK TABLES `Person` WRITE;
 /*!40000 ALTER TABLE `Person` DISABLE KEYS */;
-INSERT INTO `Person` VALUES (1,1,3,'Faber','Christine','089/1'),(2,1,10,'Johann','HÃ¶rmann','089/338794');
+INSERT INTO `Person` VALUES (1,'Faber','Christine','089/1'),(2,'Johann','HÃ¶rmann','089/338794');
 /*!40000 ALTER TABLE `Person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,26 +151,19 @@ UNLOCK TABLES;
 --
 
 DROP TABLE IF EXISTS `PersonRecht`;
+DROP TABLE IF EXISTS `PersonClient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `PersonRecht` (
+CREATE TABLE `PersonClient` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `PersonID` int(11) NOT NULL DEFAULT '1',
+  `BeziehungID` int(11) NOT NULL DEFAULT '1',
   `RechtID` int(11) NOT NULL DEFAULT '0',
+  `ClientID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`PersonID`,`RechtID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `PersonRecht`
---
-
-LOCK TABLES `PersonRecht` WRITE;
-/*!40000 ALTER TABLE `PersonRecht` DISABLE KEYS */;
-INSERT INTO `PersonRecht` VALUES (1,2,1),(2,1,3);
-/*!40000 ALTER TABLE `PersonRecht` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `Recht`
