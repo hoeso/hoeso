@@ -54,7 +54,7 @@ CREATE TABLE `Client` (
   `Name` varchar(80) DEFAULT NULL,
   `Vorname` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `Client` (
 
 LOCK TABLES `Client` WRITE;
 /*!40000 ALTER TABLE `Client` DISABLE KEYS */;
-INSERT INTO `Client` VALUES (1,'1901-01-01','weiblich','Meisel','Inge');
+INSERT INTO `Client` VALUES (1,'1901-01-01','weiblich','Meisel','Inge'),(2,'1902-01-02','maennlich','Millowitsch','Willy');
 /*!40000 ALTER TABLE `Client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ CREATE TABLE `ClientAdresse` (
   `Ort` varchar(120) DEFAULT NULL,
   `Telefon` varchar(255) DEFAULT '',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `ClientAdresse` (
 
 LOCK TABLES `ClientAdresse` WRITE;
 /*!40000 ALTER TABLE `ClientAdresse` DISABLE KEYS */;
-INSERT INTO `ClientAdresse` VALUES (1,1,1,'KurfÃ¼rstendamm 19-24','10719','Berlin','030-1');
+INSERT INTO `ClientAdresse` VALUES (1,1,1,'KurfÃ¼rstendamm 19-24','10719','Berlin','030-1'),(2,2,1,'BahnhofstraÃŸe 1','51143','KÃ¶ln','069/870021176');
 /*!40000 ALTER TABLE `ClientAdresse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +186,7 @@ CREATE TABLE `Recht` (
   `Recht` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Recht`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +195,7 @@ CREATE TABLE `Recht` (
 
 LOCK TABLES `Recht` WRITE;
 /*!40000 ALTER TABLE `Recht` DISABLE KEYS */;
-INSERT INTO `Recht` VALUES (1,'nicht bevollmÃ¤chtigt'),(2,'informationsberechtigt'),(3,'Entbindung Schweigepflicht');
+INSERT INTO `Recht` VALUES (1,'nicht bevollmÃ¤chtigt'),(2,'informationsberechtigt'),(3,'Entbindung Schweigepflicht'),(4,'');
 /*!40000 ALTER TABLE `Recht` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,4 +233,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-06 13:37:36
+-- Dump completed on 2016-02-11 11:48:56
