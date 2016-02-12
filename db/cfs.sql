@@ -148,6 +148,32 @@ INSERT INTO `ClientVS` VALUES (1,2,1,49,'18'),(3,1,1,1,'4');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `MA`
+--
+
+DROP TABLE IF EXISTS `MA`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MA` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(80) DEFAULT NULL,
+  `Vorname` varchar(40) DEFAULT NULL,
+  `Geschlecht` enum('weiblich','maennlich') NOT NULL DEFAULT 'weiblich',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MA`
+--
+
+LOCK TABLES `MA` WRITE;
+/*!40000 ALTER TABLE `MA` DISABLE KEYS */;
+INSERT INTO `MA` VALUES (1,'MÃ¼ller','Lieschen','weiblich'),(2,'Olaf','SchlÃ¤frig','maennlich');
+/*!40000 ALTER TABLE `MA` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Person`
 --
 
@@ -310,4 +336,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-12 22:04:13
+-- Dump completed on 2016-02-12 22:22:56
