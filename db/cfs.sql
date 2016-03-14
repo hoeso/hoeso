@@ -135,7 +135,7 @@ CREATE TABLE `ClientVS` (
   `Menge` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`ClientID`,`TagID`,`VSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `ClientVS` (
 
 LOCK TABLES `ClientVS` WRITE;
 /*!40000 ALTER TABLE `ClientVS` DISABLE KEYS */;
-INSERT INTO `ClientVS` VALUES (10,4,1,33,'6'),(11,4,4,64,'8'),(12,4,1,86,'7');
+INSERT INTO `ClientVS` VALUES (10,4,1,33,'6'),(11,4,4,64,'8'),(12,4,1,86,'7'),(13,4,2,27,'8'),(14,3,1,25,'2'),(15,3,2,25,'4');
 /*!40000 ALTER TABLE `ClientVS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +162,7 @@ CREATE TABLE `Kontingent` (
   `Wochenstunden` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAID`,`ZeitstempelID`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +171,7 @@ CREATE TABLE `Kontingent` (
 
 LOCK TABLES `Kontingent` WRITE;
 /*!40000 ALTER TABLE `Kontingent` DISABLE KEYS */;
-INSERT INTO `Kontingent` VALUES (1,5,2,'40'),(2,6,1,'25');
+INSERT INTO `Kontingent` VALUES (1,5,2,'40'),(2,6,1,'25'),(3,7,2,'30'),(4,6,2,'30'),(5,6,3,'35'),(6,9,1,'10');
 /*!40000 ALTER TABLE `Kontingent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +244,7 @@ CREATE TABLE `MAClient` (
   `ClientID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAID`,`ClientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -253,7 +253,7 @@ CREATE TABLE `MAClient` (
 
 LOCK TABLES `MAClient` WRITE;
 /*!40000 ALTER TABLE `MAClient` DISABLE KEYS */;
-INSERT INTO `MAClient` VALUES (8,5,4),(9,6,3),(10,9,4);
+INSERT INTO `MAClient` VALUES (8,5,4),(9,6,3),(10,9,4),(11,6,4),(12,7,3);
 /*!40000 ALTER TABLE `MAClient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +270,7 @@ CREATE TABLE `MAClientVS` (
   `ClientVSID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAClientID`,`ClientVSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,6 +279,7 @@ CREATE TABLE `MAClientVS` (
 
 LOCK TABLES `MAClientVS` WRITE;
 /*!40000 ALTER TABLE `MAClientVS` DISABLE KEYS */;
+INSERT INTO `MAClientVS` VALUES (10,9,14),(11,10,10),(12,10,12),(14,10,13),(15,10,11),(16,9,15),(17,9,1);
 /*!40000 ALTER TABLE `MAClientVS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,6 +371,7 @@ DROP TABLE IF EXISTS `Tag`;
 CREATE TABLE `Tag` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Tag` varchar(10) DEFAULT NULL,
+  `SC` enum('Mo','Di','Mi','Do','Fr','Sa','So') NOT NULL DEFAULT 'Mo',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Tag`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -381,7 +383,7 @@ CREATE TABLE `Tag` (
 
 LOCK TABLES `Tag` WRITE;
 /*!40000 ALTER TABLE `Tag` DISABLE KEYS */;
-INSERT INTO `Tag` VALUES (1,'Montag'),(2,'Dienstag'),(3,'Mittwoch'),(4,'Donnerstag'),(5,'Freitag'),(6,'Samstag'),(7,'Sonntag');
+INSERT INTO `Tag` VALUES (1,'Montag','Mo'),(2,'Dienstag','Di'),(3,'Mittwoch','Mi'),(4,'Donnerstag','Do'),(5,'Freitag','Fr'),(6,'Samstag','Sa'),(7,'Sonntag','So');
 /*!40000 ALTER TABLE `Tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +424,7 @@ CREATE TABLE `Zeitstempel` (
   `Datum` date DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Zeitstempel` (`Datum`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -431,7 +433,7 @@ CREATE TABLE `Zeitstempel` (
 
 LOCK TABLES `Zeitstempel` WRITE;
 /*!40000 ALTER TABLE `Zeitstempel` DISABLE KEYS */;
-INSERT INTO `Zeitstempel` VALUES (1,'2016-01-01'),(2,'2016-02-15');
+INSERT INTO `Zeitstempel` VALUES (1,'2016-01-01'),(2,'2016-02-15'),(3,'2016-04-01');
 /*!40000 ALTER TABLE `Zeitstempel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -444,4 +446,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-02-24 22:19:58
+-- Dump completed on 2016-03-14 23:03:41
