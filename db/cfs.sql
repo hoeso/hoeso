@@ -63,7 +63,7 @@ CREATE TABLE `Client` (
 
 LOCK TABLES `Client` WRITE;
 /*!40000 ALTER TABLE `Client` DISABLE KEYS */;
-INSERT INTO `Client` VALUES (3,'1930-10-17','weiblich','MÃ¼ller','Marianne'),(4,'1944-08-20','weiblich','Nuster','Selma'),(5,'1901-01-02','weiblich','Clientin01','Clara01'),(6,'1901-01-03','weiblich','Clientin02','Clara02'),(7,'1901-01-04','weiblich','Clientin03','Clara03'),(8,'1901-01-04','weiblich','Clientin04','Clara04');
+INSERT INTO `Client` VALUES (3,'1930-10-17','weiblich','MÃ¼ller','Marianne'),(4,'1944-08-20','weiblich','Nuster','Selma'),(5,'1901-01-02','weiblich','Clientin01','Clara01'),(6,'1901-01-03','weiblich','Huber','Andrea'),(7,'1901-01-04','weiblich','Clientin03','Clara03'),(8,'1901-01-04','weiblich','Clientin04','Clara04');
 /*!40000 ALTER TABLE `Client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +135,7 @@ CREATE TABLE `ClientVS` (
   `Menge` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`ClientID`,`TagID`,`VSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `ClientVS` (
 
 LOCK TABLES `ClientVS` WRITE;
 /*!40000 ALTER TABLE `ClientVS` DISABLE KEYS */;
-INSERT INTO `ClientVS` VALUES (10,4,1,33,'6'),(11,4,4,63,'8'),(12,4,1,85,'7'),(13,4,2,27,'8'),(14,3,1,25,'2'),(15,3,2,25,'4');
+INSERT INTO `ClientVS` VALUES (10,4,1,33,'6'),(11,4,4,63,'8'),(12,4,1,85,'7'),(13,4,2,27,'8'),(14,3,1,25,'2'),(15,3,2,25,'4'),(16,5,1,31,'8'),(17,5,1,81,'4'),(18,5,3,31,'8'),(19,5,3,85,'4'),(20,6,1,41,'12'),(21,6,3,41,'8');
 /*!40000 ALTER TABLE `ClientVS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,7 +187,7 @@ CREATE TABLE `Kontingent` (
   `Wochenstunden` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAID`,`ZeitstempelID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `Kontingent` (
 
 LOCK TABLES `Kontingent` WRITE;
 /*!40000 ALTER TABLE `Kontingent` DISABLE KEYS */;
-INSERT INTO `Kontingent` VALUES (1,5,2,'40'),(2,6,1,'25'),(3,7,2,'30'),(4,6,2,'30'),(5,6,3,'35'),(6,9,1,'10');
+INSERT INTO `Kontingent` VALUES (1,5,2,'40'),(2,6,1,'25'),(3,7,2,'30'),(4,6,2,'30'),(5,6,3,'35'),(6,9,1,'10'),(7,4,3,'20');
 /*!40000 ALTER TABLE `Kontingent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +269,7 @@ CREATE TABLE `MAClient` (
   `ClientID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAID`,`ClientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,7 +278,7 @@ CREATE TABLE `MAClient` (
 
 LOCK TABLES `MAClient` WRITE;
 /*!40000 ALTER TABLE `MAClient` DISABLE KEYS */;
-INSERT INTO `MAClient` VALUES (8,5,4),(9,6,3),(10,9,4),(11,6,4),(12,7,3);
+INSERT INTO `MAClient` VALUES (8,5,4),(9,6,3),(10,9,4),(11,6,4),(12,7,3),(13,4,3),(14,5,5),(15,4,5),(16,6,6),(17,5,6);
 /*!40000 ALTER TABLE `MAClient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +295,7 @@ CREATE TABLE `MAClientVS` (
   `ClientVSID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAClientID`,`ClientVSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +304,7 @@ CREATE TABLE `MAClientVS` (
 
 LOCK TABLES `MAClientVS` WRITE;
 /*!40000 ALTER TABLE `MAClientVS` DISABLE KEYS */;
-INSERT INTO `MAClientVS` VALUES (10,9,14),(11,10,10),(18,8,12),(14,10,13),(15,10,11),(16,9,15),(17,9,1);
+INSERT INTO `MAClientVS` VALUES (10,9,14),(11,10,10),(18,8,12),(14,10,13),(15,10,11),(16,9,15),(17,9,1),(19,15,16),(20,15,18),(21,14,17),(22,14,19),(23,17,20),(24,16,21);
 /*!40000 ALTER TABLE `MAClientVS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -471,4 +471,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-06 18:19:48
+-- Dump completed on 2016-04-07 22:05:56
