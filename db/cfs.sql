@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.28, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.30, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: cfs
 -- ------------------------------------------------------
--- Server version	5.6.28-1
+-- Server version	5.6.30-1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -130,12 +130,14 @@ DROP TABLE IF EXISTS `ClientVS`;
 CREATE TABLE `ClientVS` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ClientID` int(11) NOT NULL DEFAULT '1',
+  `JahrID` int(11) NOT NULL DEFAULT '16',
+  `KWID` int(11) NOT NULL DEFAULT '18',
   `TagID` int(11) NOT NULL DEFAULT '0',
   `VSID` int(11) NOT NULL DEFAULT '1',
   `Menge` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`ClientID`,`TagID`,`VSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -144,7 +146,7 @@ CREATE TABLE `ClientVS` (
 
 LOCK TABLES `ClientVS` WRITE;
 /*!40000 ALTER TABLE `ClientVS` DISABLE KEYS */;
-INSERT INTO `ClientVS` VALUES (10,4,1,33,'6'),(11,4,4,63,'8'),(12,4,1,85,'7'),(13,4,2,27,'8'),(14,3,1,25,'2'),(15,3,2,25,'4'),(16,5,1,31,'8'),(17,5,1,81,'4'),(18,5,3,31,'8'),(19,5,3,85,'4'),(20,6,1,41,'12'),(21,6,3,41,'8');
+INSERT INTO `ClientVS` VALUES (10,4,16,17,1,33,'6'),(11,4,16,17,4,63,'8'),(12,4,16,17,1,85,'7'),(13,4,16,17,2,27,'8'),(14,3,16,17,1,25,'2'),(15,3,16,17,2,25,'4'),(16,5,16,17,1,31,'8'),(17,5,16,17,1,81,'4'),(18,5,16,17,3,31,'8'),(19,5,16,17,3,85,'4'),(20,6,16,17,1,41,'12'),(21,6,16,17,3,41,'8'),(22,5,16,17,3,33,'4'),(23,5,16,17,5,28,'8'),(24,7,16,17,5,27,'4'),(25,7,16,17,3,25,'4'),(26,3,16,17,3,25,'4');
 /*!40000 ALTER TABLE `ClientVS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,6 +173,56 @@ LOCK TABLES `Engagement` WRITE;
 /*!40000 ALTER TABLE `Engagement` DISABLE KEYS */;
 INSERT INTO `Engagement` VALUES (1,'20%'),(2,'60%'),(3,'0%'),(4,'80%');
 /*!40000 ALTER TABLE `Engagement` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Jahr`
+--
+
+DROP TABLE IF EXISTS `Jahr`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Jahr` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Jahr` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Jahr`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Jahr`
+--
+
+LOCK TABLES `Jahr` WRITE;
+/*!40000 ALTER TABLE `Jahr` DISABLE KEYS */;
+INSERT INTO `Jahr` VALUES (1,2001),(2,2002),(3,2003),(4,2004),(5,2005),(6,2006),(7,2007),(8,2008),(9,2009),(10,2010),(11,2011),(12,2012),(13,2013),(14,2014),(15,2015),(16,2016),(17,2017),(18,2018),(19,2019),(20,2020),(21,2021),(22,2022);
+/*!40000 ALTER TABLE `Jahr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `KW`
+--
+
+DROP TABLE IF EXISTS `KW`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `KW` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `KW` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`KW`)
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `KW`
+--
+
+LOCK TABLES `KW` WRITE;
+/*!40000 ALTER TABLE `KW` DISABLE KEYS */;
+INSERT INTO `KW` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15),(16,16),(17,17),(18,18),(19,19),(20,20),(21,21),(22,22),(23,23),(24,24),(25,25),(26,26),(27,27),(28,28),(29,29),(30,30),(31,31),(32,32),(33,33),(34,34),(35,35),(36,36),(37,37),(38,38),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45),(46,46),(47,47),(48,48),(49,49),(50,50),(51,51),(52,52),(53,53);
+/*!40000 ALTER TABLE `KW` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -471,4 +523,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-07 22:05:56
+-- Dump completed on 2016-04-26 20:40:49
