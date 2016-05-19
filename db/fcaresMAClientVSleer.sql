@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.30, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: cfs
 -- ------------------------------------------------------
--- Server version	5.5.49-0+deb8u1
+-- Server version	5.6.30-1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -137,7 +137,7 @@ CREATE TABLE `ClientVS` (
   `Menge` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`ClientID`,`JahrID`,`KWID`,`TagID`,`VSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,8 +146,33 @@ CREATE TABLE `ClientVS` (
 
 LOCK TABLES `ClientVS` WRITE;
 /*!40000 ALTER TABLE `ClientVS` DISABLE KEYS */;
-INSERT INTO `ClientVS` VALUES (22,9,16,17,1,31,'8'),(23,9,16,17,1,81,'4'),(24,9,16,17,2,31,'8'),(25,9,16,17,2,81,'4'),(26,9,16,17,3,31,'8'),(27,9,16,17,3,81,'4'),(28,9,16,17,4,31,'8'),(29,9,16,17,4,81,'4'),(30,9,16,17,5,31,'8'),(31,9,16,17,5,81,'4'),(32,9,16,17,6,31,'8'),(33,9,16,17,6,81,'4'),(34,9,16,17,7,31,'8'),(35,9,16,17,7,81,'4'),(36,9,16,18,3,31,'8'),(37,9,16,19,3,31,'8');
+INSERT INTO `ClientVS` VALUES (22,9,16,22,1,31,'8'),(23,9,16,22,1,81,'4'),(24,9,16,22,2,31,'8'),(25,9,16,22,2,81,'4'),(26,9,16,22,3,31,'8'),(27,9,16,22,3,81,'4'),(28,9,16,22,4,31,'8'),(29,9,16,22,4,81,'4'),(30,9,16,22,5,31,'8'),(31,9,16,22,5,81,'4'),(32,9,16,22,6,31,'8'),(33,9,16,22,6,81,'4'),(34,9,16,22,7,31,'8'),(35,9,16,22,7,81,'4');
 /*!40000 ALTER TABLE `ClientVS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Engagement`
+--
+
+DROP TABLE IF EXISTS `Engagement`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Engagement` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Engagement` enum('0%','1%','2%','3%','4%','5%','6%','7%','8%','9%','10%','11%','12%','13%','14%','15%','16%','17%','18%','19%','20%','21%','22%','23%','24%','25%','26%','27%','28%','29%','30%','31%','32%','33%','34%','35%','36%','37%','38%','39%','40%','41%','42%','43%','44%','45%','46%','47%','48%','49%','50%','51%','52%','53%','54%','55%','56%','57%','58%','59%','60%','61%','62%','63%','64%','65%','66%','67%','68%','69%','70%','71%','72%','73%','74%','75%','76%','77%','78%','79%','80%','81%','82%','83%','84%','85%','86%','87%','88%','89%','90%','91%','92%','93%','94%','95%','96%','97%','98%','99%','100%') NOT NULL DEFAULT '20%',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Engagement`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Engagement`
+--
+
+LOCK TABLES `Engagement` WRITE;
+/*!40000 ALTER TABLE `Engagement` DISABLE KEYS */;
+INSERT INTO `Engagement` VALUES (1,'20%'),(2,'60%'),(3,'0%'),(4,'80%');
+/*!40000 ALTER TABLE `Engagement` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -322,7 +347,7 @@ CREATE TABLE `MAClientVS` (
   `ClientVSID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAClientID`,`ClientVSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -331,7 +356,6 @@ CREATE TABLE `MAClientVS` (
 
 LOCK TABLES `MAClientVS` WRITE;
 /*!40000 ALTER TABLE `MAClientVS` DISABLE KEYS */;
-INSERT INTO `MAClientVS` VALUES (26,18,0);
 /*!40000 ALTER TABLE `MAClientVS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -498,4 +522,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-19 19:11:36
+-- Dump completed on 2016-05-19 19:50:31
