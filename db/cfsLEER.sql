@@ -193,7 +193,7 @@ CREATE TABLE `MAAbwesenheit` (
   `Ende` date DEFAULT NULL,
   `Grund` enum('Urlaub','krank') NOT NULL DEFAULT 'Urlaub',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,6 +342,27 @@ CREATE TABLE `Zeitstempel` (
   UNIQUE KEY `Zeitstempel` (`Datum`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `metaMAAbwesenheit`
+--
+
+DROP TABLE IF EXISTS `metaMAAbwesenheit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `metaMAAbwesenheit` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `MAAbwesenheitID` int(11) NOT NULL DEFAULT '1',
+  `JahrID0` int(11) NOT NULL DEFAULT '16',
+  `JahrID1` int(11) NOT NULL DEFAULT '16',
+  `KWID0` int(11) NOT NULL DEFAULT '18',
+  `KWID1` int(11) NOT NULL DEFAULT '18',
+  `TagID0` int(11) NOT NULL DEFAULT '0',
+  `TagID1` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`JahrID0`,`KWID0`,`TagID0`,`JahrID1`,`KWID1`,`TagID1`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -352,4 +373,4 @@ CREATE TABLE `Zeitstempel` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-19 15:05:57
+-- Dump completed on 2016-09-12 18:27:44
