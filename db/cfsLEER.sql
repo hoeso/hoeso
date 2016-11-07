@@ -44,7 +44,7 @@ CREATE TABLE `Client` (
   `Name` varchar(80) DEFAULT NULL,
   `Vorname` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `ClientVS` (
   `Menge` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`ClientID`,`JahrID`,`KWID`,`TagID`,`VSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=157 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=194 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +193,7 @@ CREATE TABLE `MAAbwesenheit` (
   `Ende` date DEFAULT NULL,
   `Grund` enum('Urlaub','krank') NOT NULL DEFAULT 'Urlaub',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +229,7 @@ CREATE TABLE `MAClient` (
   `ClientID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAID`,`ClientID`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +245,7 @@ CREATE TABLE `MAClientVS` (
   `ClientVSID` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MAClientID`,`ClientVSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=160 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `metaMAAbwesenheit` (
   `TagID1` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`JahrID0`,`KWID0`,`TagID0`,`JahrID1`,`KWID1`,`TagID1`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -373,4 +373,4 @@ CREATE TABLE `metaMAAbwesenheit` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-12 18:27:44
+-- Dump completed on 2016-11-07 20:55:33
