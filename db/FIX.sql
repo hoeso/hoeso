@@ -16,6 +16,56 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `Beziehung`
+--
+
+DROP TABLE IF EXISTS `Beziehung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Beziehung` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Beziehung` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Beziehung`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Beziehung`
+--
+
+LOCK TABLES `Beziehung` WRITE;
+/*!40000 ALTER TABLE `Beziehung` DISABLE KEYS */;
+INSERT INTO `Beziehung` VALUES (1,'Vater'),(2,'Mutter'),(3,'Tochter'),(4,'Sohn'),(5,'Neffe'),(6,'Nichte'),(7,'Tante'),(8,'Onkel'),(9,'Client'),(10,'Enkel'),(11,'Enkelin');
+/*!40000 ALTER TABLE `Beziehung` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Recht`
+--
+
+DROP TABLE IF EXISTS `Recht`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Recht` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Recht` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Recht`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Recht`
+--
+
+LOCK TABLES `Recht` WRITE;
+/*!40000 ALTER TABLE `Recht` DISABLE KEYS */;
+INSERT INTO `Recht` VALUES (1,'nicht bevollmÃ¤chtigt'),(2,'informationsberechtigt'),(3,'Entbindung Schweigepflicht');
+/*!40000 ALTER TABLE `Recht` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Jahr`
 --
 
@@ -125,4 +175,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-08 13:53:21
+-- Dump completed on 2017-11-08 14:04:14
