@@ -148,12 +148,12 @@ DROP TABLE IF EXISTS `Dauer`;
 CREATE TABLE `Dauer` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `KursID` int(11) NOT NULL DEFAULT 1,
-  `Teilnehmer` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16') NOT NULL DEFAULT '12',
+  `Teilnehmer` enum('>6','1','>1','>2','>3','>4','>5','>7','>8','>9','>10','>11','>12','>13','>14','>15','>16') NOT NULL DEFAULT '>6',
   `Termine` enum('1','2','3','4','5','6') NOT NULL DEFAULT '4',
   `Dauer` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`KursID`,`Teilnehmer`,`Termine`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `Dauer` (
 
 LOCK TABLES `Dauer` WRITE;
 /*!40000 ALTER TABLE `Dauer` DISABLE KEYS */;
-INSERT INTO `Dauer` VALUES (11,1,'9','4','16');
+INSERT INTO `Dauer` VALUES (12,1,'>6','4','12');
 /*!40000 ALTER TABLE `Dauer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -851,4 +851,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-18 19:49:23
+-- Dump completed on 2020-03-19 10:32:49
