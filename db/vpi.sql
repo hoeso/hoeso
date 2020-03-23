@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: vpi
 -- ------------------------------------------------------
--- Server version	10.3.22-MariaDB-1
+-- Server version	10.3.22-MariaDB-0+deb10u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -466,7 +466,7 @@ CREATE TABLE `Kursart` (
   `Kursart` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Kursart`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -475,7 +475,7 @@ CREATE TABLE `Kursart` (
 
 LOCK TABLES `Kursart` WRITE;
 /*!40000 ALTER TABLE `Kursart` DISABLE KEYS */;
-INSERT INTO `Kursart` VALUES (1,'Nachschulung');
+INSERT INTO `Kursart` VALUES (1,'Nachschulung'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
 /*!40000 ALTER TABLE `Kursart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -628,7 +628,7 @@ CREATE TABLE `Ort` (
   `PLZ` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`BundeslandID`,`Kursort`,`PLZ`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -637,7 +637,7 @@ CREATE TABLE `Ort` (
 
 LOCK TABLES `Ort` WRITE;
 /*!40000 ALTER TABLE `Ort` DISABLE KEYS */;
-INSERT INTO `Ort` VALUES (1,2,'INFAR','Salzburg','Karl-Wurmb-Str. 3','5020');
+INSERT INTO `Ort` VALUES (1,2,'INFAR','Salzburg','Karl-Wurmb-Str. 3','5020'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840');
 /*!40000 ALTER TABLE `Ort` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -935,4 +935,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-21 17:10:30
+-- Dump completed on 2020-03-23 17:17:15
