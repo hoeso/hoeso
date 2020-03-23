@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: vpi
 -- ------------------------------------------------------
--- Server version	10.3.22-MariaDB-0+deb10u1
+-- Server version	10.3.22-MariaDB-1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -241,6 +241,31 @@ INSERT INTO `KW` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(1
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Kategorie`
+--
+
+DROP TABLE IF EXISTS `Kategorie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Kategorie` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Kategorie` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Kategorie`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Kategorie`
+--
+
+LOCK TABLES `Kategorie` WRITE;
+/*!40000 ALTER TABLE `Kategorie` DISABLE KEYS */;
+INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(5,'Drogen'),(6,'Kurve'),(7,'sonstiges');
+/*!40000 ALTER TABLE `Kategorie` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Klient`
 --
 
@@ -463,9 +488,10 @@ DROP TABLE IF EXISTS `Kursart`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Kursart` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LeistungID` int(11) NOT NULL DEFAULT 1,
   `Kursart` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`Kursart`)
+  UNIQUE KEY `IDX` (`LeistungID`,`Kursart`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -475,8 +501,32 @@ CREATE TABLE `Kursart` (
 
 LOCK TABLES `Kursart` WRITE;
 /*!40000 ALTER TABLE `Kursart` DISABLE KEYS */;
-INSERT INTO `Kursart` VALUES (1,'Nachschulung'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
 /*!40000 ALTER TABLE `Kursart` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Leistung`
+--
+
+DROP TABLE IF EXISTS `Leistung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Leistung` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Leistung` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Leistung`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Leistung`
+--
+
+LOCK TABLES `Leistung` WRITE;
+/*!40000 ALTER TABLE `Leistung` DISABLE KEYS */;
+INSERT INTO `Leistung` VALUES (1,'Nachschulung'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
+/*!40000 ALTER TABLE `Leistung` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -622,6 +672,7 @@ DROP TABLE IF EXISTS `Ort`;
 CREATE TABLE `Ort` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `BundeslandID` int(11) NOT NULL DEFAULT 1,
+  `TrainerID` int(11) NOT NULL DEFAULT 1,
   `Kursort` varchar(255) DEFAULT NULL,
   `Ortschaft` varchar(120) DEFAULT NULL,
   `Strasse` varchar(120) DEFAULT NULL,
@@ -637,7 +688,7 @@ CREATE TABLE `Ort` (
 
 LOCK TABLES `Ort` WRITE;
 /*!40000 ALTER TABLE `Ort` DISABLE KEYS */;
-INSERT INTO `Ort` VALUES (1,2,'INFAR','Salzburg','Karl-Wurmb-Str. 3','5020'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840');
+INSERT INTO `Ort` VALUES (1,2,3,'INFAR','Salzburg','Karl-Wurmb-Str. 3','5020'),(2,1,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840');
 /*!40000 ALTER TABLE `Ort` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -935,4 +986,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-23 17:17:15
+-- Dump completed on 2020-03-23 18:30:25
