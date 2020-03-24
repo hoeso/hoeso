@@ -266,29 +266,28 @@ INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(5,'Drogen'),(6,'Kurve'),(7,'sonsti
 UNLOCK TABLES;
 
 --
--- Table structure for table `Klient`
+-- Table structure for table `Proband`
 --
 
-DROP TABLE IF EXISTS `Klient`;
+DROP TABLE IF EXISTS `Proband`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Klient` (
+CREATE TABLE `Proband` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `geborenAm` date DEFAULT '1901-01-01',
   `Geschlecht` enum('weiblich','maennlich') NOT NULL DEFAULT 'weiblich',
   `Name` varchar(80) DEFAULT NULL,
   `Vorname` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Klient`
+-- Dumping data for table `Proband`
 --
 
-LOCK TABLES `Klient` WRITE;
+LOCK TABLES `Proband` WRITE;
 /*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
-INSERT INTO `Klient` VALUES (9,'1919-11-07','weiblich','Siebauer','Amalie');
 /*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -848,28 +847,28 @@ LOCK TABLES `Tel` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `TelKlient`
+-- Table structure for table `TelProband`
 --
 
-DROP TABLE IF EXISTS `TelKlient`;
+DROP TABLE IF EXISTS `TelProband`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `TelKlient` (
+CREATE TABLE `TelProband` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `TelID` int(11) NOT NULL DEFAULT 1,
-  `KlientID` int(11) NOT NULL DEFAULT 1,
+  `ProbandID` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`TelID`,`KlientID`)
+  UNIQUE KEY `IDX` (`TelID`,`ProbandID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `TelKlient`
+-- Dumping data for table `TelProband`
 --
 
-LOCK TABLES `TelKlient` WRITE;
-/*!40000 ALTER TABLE `TelKlient` DISABLE KEYS */;
-/*!40000 ALTER TABLE `TelKlient` ENABLE KEYS */;
+LOCK TABLES `TelProband` WRITE;
+/*!40000 ALTER TABLE `TelProband` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TelProband` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
