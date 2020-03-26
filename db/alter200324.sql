@@ -1,3 +1,4 @@
+ALTER TABLE Trainer ADD Titel enum('Mag.','Dr.','Ing.Mag.') NOT NULL DEFAULT 'Mag.' AFTER Vorname;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TelProband` (
@@ -9,7 +10,6 @@ CREATE TABLE `TelProband` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-DROP TABLE IF EXISTS `Proband`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Proband` (
@@ -22,4 +22,3 @@ CREATE TABLE `Proband` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-ALTER TABLE Trainer ADD Titel enum('Mag.','Dr.','Ing.Mag.') NOT NULL DEFAULT 'Mag.' AFTER Vorname;
