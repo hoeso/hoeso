@@ -27,7 +27,7 @@ CREATE TABLE `Behoerde` (
   `Behoerde` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Behoerde`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `Behoerde` (
 
 LOCK TABLES `Behoerde` WRITE;
 /*!40000 ALTER TABLE `Behoerde` DISABLE KEYS */;
-INSERT INTO `Behoerde` VALUES (1,'BH Salzburg Umgebung');
+INSERT INTO `Behoerde` VALUES (1,'BH Salzburg Umgebung'),(2,'LPD Salzburg'),(3,'BH Braunau'),(4,'BH Vöcklabruck'),(5,'BH Wels'),(6,'BH Steyr'),(7,'BH Zell am See'),(8,'BH Tamsweg'),(9,'BH Perg'),(10,'BH Grieskirchen-Eferding'),(11,'BH St. Johann'),(12,'BH Gmunden'),(13,'BH Linz Land'),(14,'LPD Oberösterreich Linz'),(15,'LPD Oberösterreich Wels'),(16,'LPD Oberösterreich Steyr'),(17,'BH Freistadt'),(18,'BH Urfahr Umgebung'),(19,'BH Kirchdorf');
 /*!40000 ALTER TABLE `Behoerde` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +86,7 @@ CREATE TABLE `Bundesland` (
 
 LOCK TABLES `Bundesland` WRITE;
 /*!40000 ALTER TABLE `Bundesland` DISABLE KEYS */;
-INSERT INTO `Bundesland` VALUES (1,'OÖ'),(2,'Salzburg');
+INSERT INTO `Bundesland` VALUES (1,'Oberösterreich'),(2,'Salzburg');
 /*!40000 ALTER TABLE `Bundesland` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,33 +261,34 @@ CREATE TABLE `Kategorie` (
 
 LOCK TABLES `Kategorie` WRITE;
 /*!40000 ALTER TABLE `Kategorie` DISABLE KEYS */;
-INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(5,'Drogen'),(6,'Kurve'),(7,'sonstiges');
+INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(5,'Drogen'),(6,'Kurve'),(7,'Sonstiges');
 /*!40000 ALTER TABLE `Kategorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Proband`
+-- Table structure for table `Klient`
 --
 
-DROP TABLE IF EXISTS `Proband`;
+DROP TABLE IF EXISTS `Klient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Proband` (
+CREATE TABLE `Klient` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `geborenAm` date DEFAULT '1901-01-01',
   `Geschlecht` enum('weiblich','maennlich') NOT NULL DEFAULT 'weiblich',
   `Name` varchar(80) DEFAULT NULL,
   `Vorname` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Proband`
+-- Dumping data for table `Klient`
 --
 
-LOCK TABLES `Proband` WRITE;
+LOCK TABLES `Klient` WRITE;
 /*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
+INSERT INTO `Klient` VALUES (9,'1919-11-07','weiblich','Siebauer','Amalie');
 /*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -487,10 +488,10 @@ DROP TABLE IF EXISTS `Kursart`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Kursart` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `LeistungID` int(11) NOT NULL DEFAULT 1,
+  `TerminartID` int(11) NOT NULL DEFAULT 1,
   `Kursart` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`LeistungID`,`Kursart`)
+  UNIQUE KEY `IDX` (`TerminartID`,`Kursart`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -524,7 +525,7 @@ CREATE TABLE `Leistung` (
 
 LOCK TABLES `Leistung` WRITE;
 /*!40000 ALTER TABLE `Leistung` DISABLE KEYS */;
-INSERT INTO `Leistung` VALUES (1,'Nachschulung'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
+INSERT INTO `Leistung` VALUES (1,'Nachschulung Kurs'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
 /*!40000 ALTER TABLE `Leistung` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -662,6 +663,31 @@ LOCK TABLES `MAKlientVS` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Massnahme`
+--
+
+DROP TABLE IF EXISTS `Massnahme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Massnahme` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Massnahme` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Massnahme`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Massnahme`
+--
+
+LOCK TABLES `Massnahme` WRITE;
+/*!40000 ALTER TABLE `Massnahme` DISABLE KEYS */;
+INSERT INTO `Massnahme` VALUES (1,'BVA'),(2,'Kfz-L'),(3,'KG'),(4,'KiSi'),(5,'NS Ei'),(6,'NT'),(7,'VPU'),(8,'Waffe');
+/*!40000 ALTER TABLE `Massnahme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Ort`
 --
 
@@ -671,14 +697,13 @@ DROP TABLE IF EXISTS `Ort`;
 CREATE TABLE `Ort` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `BundeslandID` int(11) NOT NULL DEFAULT 1,
-  `TrainerID` int(11) NOT NULL DEFAULT 1,
   `Kursort` varchar(255) DEFAULT NULL,
   `Ortschaft` varchar(120) DEFAULT NULL,
   `Strasse` varchar(120) DEFAULT NULL,
   `PLZ` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`BundeslandID`,`Kursort`,`PLZ`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -687,7 +712,7 @@ CREATE TABLE `Ort` (
 
 LOCK TABLES `Ort` WRITE;
 /*!40000 ALTER TABLE `Ort` DISABLE KEYS */;
-INSERT INTO `Ort` VALUES (1,2,3,'INFAR','Salzburg','Karl-Wurmb-Str. 3','5020'),(2,1,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840');
+INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 '),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 '),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 '),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 '),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 '),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 '),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 '),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121');
 /*!40000 ALTER TABLE `Ort` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -772,6 +797,32 @@ LOCK TABLES `PersonKlient` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Proband`
+--
+
+DROP TABLE IF EXISTS `Proband`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Proband` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `geborenAm` date DEFAULT '1901-01-01',
+  `Name` varchar(80) DEFAULT NULL,
+  `Vorname` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`geborenAm`,`Name`,`Vorname`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Proband`
+--
+
+LOCK TABLES `Proband` WRITE;
+/*!40000 ALTER TABLE `Proband` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Proband` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Recht`
 --
 
@@ -807,6 +858,7 @@ CREATE TABLE `Tag` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Tag` varchar(10) DEFAULT NULL,
   `SC` enum('Mo','Di','Mi','Do','Fr','Sa','So') NOT NULL DEFAULT 'Mo',
+  `day` enum('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday') NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Tag`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
@@ -818,7 +870,7 @@ CREATE TABLE `Tag` (
 
 LOCK TABLES `Tag` WRITE;
 /*!40000 ALTER TABLE `Tag` DISABLE KEYS */;
-INSERT INTO `Tag` VALUES (1,'Montag','Mo'),(2,'Dienstag','Di'),(3,'Mittwoch','Mi'),(4,'Donnerstag','Do'),(5,'Freitag','Fr'),(6,'Samstag','Sa'),(7,'Sonntag','So');
+INSERT INTO `Tag` VALUES (1,'Montag','Mo','Monday'),(2,'Dienstag','Di','Tuesday'),(3,'Mittwoch','Mi','Wednesday'),(4,'Donnerstag','Do','Thursday'),(5,'Freitag','Fr','Friday'),(6,'Samstag','Sa','Saturday'),(7,'Sonntag','So','Sunday');
 /*!40000 ALTER TABLE `Tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -844,6 +896,31 @@ CREATE TABLE `Tel` (
 LOCK TABLES `Tel` WRITE;
 /*!40000 ALTER TABLE `Tel` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Tel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TelKlient`
+--
+
+DROP TABLE IF EXISTS `TelKlient`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TelKlient` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TelID` int(11) NOT NULL DEFAULT 1,
+  `KlientID` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`TelID`,`KlientID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TelKlient`
+--
+
+LOCK TABLES `TelKlient` WRITE;
+/*!40000 ALTER TABLE `TelKlient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `TelKlient` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -880,15 +957,16 @@ DROP TABLE IF EXISTS `Termin`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Termin` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `KursID` int(11) NOT NULL DEFAULT 1,
+  `TerminartID` int(11) NOT NULL DEFAULT 1,
+  `OrtID` int(11) NOT NULL DEFAULT 1,
+  `TrainerID` int(11) NOT NULL DEFAULT 16,
   `JahrID` int(11) NOT NULL DEFAULT 16,
   `KWID` int(11) NOT NULL DEFAULT 18,
   `TagID` int(11) NOT NULL DEFAULT 0,
   `VSID` int(11) NOT NULL DEFAULT 1,
   `Dauer` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`KursID`,`JahrID`,`KWID`,`TagID`,`VSID`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -897,7 +975,33 @@ CREATE TABLE `Termin` (
 
 LOCK TABLES `Termin` WRITE;
 /*!40000 ALTER TABLE `Termin` DISABLE KEYS */;
+INSERT INTO `Termin` VALUES (8,1,8,4,20,14,5,73,'4');
 /*!40000 ALTER TABLE `Termin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Terminart`
+--
+
+DROP TABLE IF EXISTS `Terminart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Terminart` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Terminart` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`Terminart`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Terminart`
+--
+
+LOCK TABLES `Terminart` WRITE;
+/*!40000 ALTER TABLE `Terminart` DISABLE KEYS */;
+INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
+/*!40000 ALTER TABLE `Terminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -911,10 +1015,11 @@ CREATE TABLE `Trainer` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(40) DEFAULT NULL,
   `Vorname` varchar(40) DEFAULT NULL,
+  `Titel` enum('Mag.','Dr.','Ing.Mag.') NOT NULL DEFAULT 'Mag.',
   `Telefon` varchar(80) DEFAULT '',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Name`,`Vorname`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -923,8 +1028,60 @@ CREATE TABLE `Trainer` (
 
 LOCK TABLES `Trainer` WRITE;
 /*!40000 ALTER TABLE `Trainer` DISABLE KEYS */;
-INSERT INTO `Trainer` VALUES (1,'Horn','Robert','+436641767307');
+INSERT INTO `Trainer` VALUES (1,'Horn','Robert','Ing.Mag.','0664/1767307'),(2,'Mühlbacher','Michaela','Mag.','0660/1101133 '),(3,'Mitterndorfer','Renate','Mag.','0699/19088493'),(4,'Standler','Natalie','Mag.','0660/1518656'),(5,'Schatzl','Werner','Mag.','0650/2201106'),(6,'Gappmaier','Alexander','Mag.','0664/3138243'),(7,'Riegler','Erwin','Mag.',''),(10,'Ruby','Maria','Dr.','0699/12634849'),(9,'Ruby','Isabella','Mag.','0664/9697322');
 /*!40000 ALTER TABLE `Trainer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TrainerOrtLeistung`
+--
+
+DROP TABLE IF EXISTS `TrainerOrtLeistung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TrainerOrtLeistung` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TrainerID` int(11) NOT NULL DEFAULT 16,
+  `OrtID` int(11) NOT NULL DEFAULT 1,
+  `LeistungID` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TrainerOrtLeistung`
+--
+
+LOCK TABLES `TrainerOrtLeistung` WRITE;
+/*!40000 ALTER TABLE `TrainerOrtLeistung` DISABLE KEYS */;
+INSERT INTO `TrainerOrtLeistung` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1);
+/*!40000 ALTER TABLE `TrainerOrtLeistung` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `TrainerOrtTerminart`
+--
+
+DROP TABLE IF EXISTS `TrainerOrtTerminart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `TrainerOrtTerminart` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `TrainerID` int(11) NOT NULL DEFAULT 16,
+  `OrtID` int(11) NOT NULL DEFAULT 1,
+  `TerminartID` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `TrainerOrtTerminart`
+--
+
+LOCK TABLES `TrainerOrtTerminart` WRITE;
+/*!40000 ALTER TABLE `TrainerOrtTerminart` DISABLE KEYS */;
+INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1);
+/*!40000 ALTER TABLE `TrainerOrtTerminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -985,4 +1142,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-23 18:30:25
+-- Dump completed on 2020-04-03 11:02:08
