@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: vpi
 -- ------------------------------------------------------
--- Server version	10.3.22-MariaDB-1
+-- Server version	10.3.22-MariaDB-0+deb10u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -261,7 +261,7 @@ CREATE TABLE `Kategorie` (
 
 LOCK TABLES `Kategorie` WRITE;
 /*!40000 ALTER TABLE `Kategorie` DISABLE KEYS */;
-INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(5,'Drogen'),(6,'Kurve'),(7,'Sonstiges');
+INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(6,'Kurve'),(7,'Sonstige');
 /*!40000 ALTER TABLE `Kategorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -701,6 +701,7 @@ CREATE TABLE `Ort` (
   `Ortschaft` varchar(120) DEFAULT NULL,
   `Strasse` varchar(120) DEFAULT NULL,
   `PLZ` varchar(20) DEFAULT NULL,
+  `Kuerzel` varchar(20) DEFAULT 'ST',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`BundeslandID`,`Kursort`,`PLZ`)
 ) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
@@ -712,7 +713,7 @@ CREATE TABLE `Ort` (
 
 LOCK TABLES `Ort` WRITE;
 /*!40000 ALTER TABLE `Ort` DISABLE KEYS */;
-INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 '),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 '),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 '),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 '),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 '),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 '),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 '),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121');
+INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020','S'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840','VB'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020','L'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560','KI'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400','ST'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 ','RI'),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 ','BdI'),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 ','BR'),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 ','WE'),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310','MO'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 ','JO'),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550','RA'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700','ZE'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760','SA'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 ','TA'),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 ','EF'),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121','OS');
 /*!40000 ALTER TABLE `Ort` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -810,7 +811,7 @@ CREATE TABLE `Proband` (
   `Vorname` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`geborenAm`,`Name`,`Vorname`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -819,6 +820,7 @@ CREATE TABLE `Proband` (
 
 LOCK TABLES `Proband` WRITE;
 /*!40000 ALTER TABLE `Proband` DISABLE KEYS */;
+INSERT INTO `Proband` VALUES (1,'2020-04-01','testname','test');
 /*!40000 ALTER TABLE `Proband` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -886,7 +888,7 @@ CREATE TABLE `Tel` (
   `Tel` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Tel`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -895,6 +897,7 @@ CREATE TABLE `Tel` (
 
 LOCK TABLES `Tel` WRITE;
 /*!40000 ALTER TABLE `Tel` DISABLE KEYS */;
+INSERT INTO `Tel` VALUES (1,'0664/4145795');
 /*!40000 ALTER TABLE `Tel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -936,7 +939,7 @@ CREATE TABLE `TelProband` (
   `ProbandID` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`TelID`,`ProbandID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -945,6 +948,7 @@ CREATE TABLE `TelProband` (
 
 LOCK TABLES `TelProband` WRITE;
 /*!40000 ALTER TABLE `TelProband` DISABLE KEYS */;
+INSERT INTO `TelProband` VALUES (1,1,1);
 /*!40000 ALTER TABLE `TelProband` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -965,8 +969,9 @@ CREATE TABLE `Termin` (
   `TagID` int(11) NOT NULL DEFAULT 0,
   `VSID` int(11) NOT NULL DEFAULT 1,
   `Dauer` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
+  `Kuerzel` varchar(20) DEFAULT '',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -975,7 +980,7 @@ CREATE TABLE `Termin` (
 
 LOCK TABLES `Termin` WRITE;
 /*!40000 ALTER TABLE `Termin` DISABLE KEYS */;
-INSERT INTO `Termin` VALUES (8,1,8,4,20,14,5,73,'4');
+INSERT INTO `Termin` VALUES (28,2,3,9,20,15,1,41,'28','L'),(27,1,3,3,20,17,3,69,'12','L22'),(26,1,3,2,20,16,6,37,'12','L18');
 /*!40000 ALTER TABLE `Termin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -989,6 +994,7 @@ DROP TABLE IF EXISTS `Terminart`;
 CREATE TABLE `Terminart` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Terminart` varchar(255) DEFAULT NULL,
+  `Kuerzel` varchar(20) DEFAULT '.UE',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Terminart`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -1000,7 +1006,7 @@ CREATE TABLE `Terminart` (
 
 LOCK TABLES `Terminart` WRITE;
 /*!40000 ALTER TABLE `Terminart` DISABLE KEYS */;
-INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs'),(2,'Untersuchung/Einzeltermin'),(3,'Verkehrscoaching Sbg');
+INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs',''),(2,'Untersuchung/Einzeltermin','.UE'),(3,'Verkehrscoaching Sbg','');
 /*!40000 ALTER TABLE `Terminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1071,7 +1077,7 @@ CREATE TABLE `TrainerOrtTerminart` (
   `OrtID` int(11) NOT NULL DEFAULT 1,
   `TerminartID` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1080,7 +1086,7 @@ CREATE TABLE `TrainerOrtTerminart` (
 
 LOCK TABLES `TrainerOrtTerminart` WRITE;
 /*!40000 ALTER TABLE `TrainerOrtTerminart` DISABLE KEYS */;
-INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1);
+INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1),(18,4,10,2),(19,4,2,2),(20,4,13,2),(21,4,14,2),(22,4,12,2),(23,4,1,2),(24,4,11,2),(25,7,5,2),(26,3,3,2),(27,10,1,3);
 /*!40000 ALTER TABLE `TrainerOrtTerminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1142,4 +1148,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-03 11:02:08
+-- Dump completed on 2020-04-07 13:48:59
