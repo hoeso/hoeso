@@ -1,3 +1,10 @@
+CREATE TABLE `AdresseProband` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AdresseID` int(11) NOT NULL DEFAULT 1,
+  `ProbandID` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`AdresseID`,`ProbandID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 CREATE TABLE `Adresse` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `OrtBehoerdeID` int(11) NOT NULL DEFAULT 1,
