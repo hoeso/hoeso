@@ -996,7 +996,7 @@ CREATE TABLE `ProbandTermin` (
   `anwesend` enum('nein','ja') NOT NULL DEFAULT 'nein',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`TerminID`,`ProbandMassnahmeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1005,7 +1005,7 @@ CREATE TABLE `ProbandTermin` (
 
 LOCK TABLES `ProbandTermin` WRITE;
 /*!40000 ALTER TABLE `ProbandTermin` DISABLE KEYS */;
-INSERT INTO `ProbandTermin` VALUES (1,30,1,'nein'),(2,31,2,'nein'),(3,32,4,'nein');
+INSERT INTO `ProbandTermin` VALUES (1,30,1,'nein'),(2,31,2,'nein'),(3,32,4,'nein'),(4,31,5,'nein');
 /*!40000 ALTER TABLE `ProbandTermin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1167,7 +1167,7 @@ CREATE TABLE `Termin` (
 
 LOCK TABLES `Termin` WRITE;
 /*!40000 ALTER TABLE `Termin` DISABLE KEYS */;
-INSERT INTO `Termin` VALUES (31,1,1,1,1,20,18,6,41,'12',' S','ja'),(30,3,1,18,10,20,17,5,57,'12','Malt','ja'),(28,2,1,3,9,20,15,1,41,'28','L','nein'),(29,2,1,1,4,20,15,3,69,'4',' S.UE','ja'),(27,1,1,3,3,20,17,3,69,'12','L22','ja'),(26,1,1,3,2,20,16,6,37,'12','L18','ja'),(32,2,8,2,4,20,21,1,37,'4',' VB.UE','ja');
+INSERT INTO `Termin` VALUES (31,1,8,1,1,20,18,6,41,'12',' S','ja'),(30,3,8,18,10,20,17,5,57,'12','Malt','ja'),(28,2,8,3,9,20,15,1,41,'28','L','nein'),(29,2,8,1,4,20,15,3,69,'4',' S.UE','ja'),(27,1,8,3,3,20,17,3,69,'12','L22','ja'),(26,1,8,3,2,20,16,6,37,'12','L18','ja'),(32,2,8,2,4,20,21,1,37,'4',' VB.UE','ja');
 /*!40000 ALTER TABLE `Termin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1335,4 +1335,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-10 18:59:42
+-- Dump completed on 2020-04-12 12:46:45
