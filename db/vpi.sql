@@ -778,7 +778,7 @@ CREATE TABLE `Massnahme` (
   `Massnahme` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Massnahme`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -787,7 +787,7 @@ CREATE TABLE `Massnahme` (
 
 LOCK TABLES `Massnahme` WRITE;
 /*!40000 ALTER TABLE `Massnahme` DISABLE KEYS */;
-INSERT INTO `Massnahme` VALUES (1,'BVA'),(2,'Kfz-L'),(3,'KG'),(4,'KiSi'),(5,'NS Ei'),(6,'NT'),(7,'VPU'),(8,'Waffe'),(9,'VC'),(10,'Sonstige'),(11,'Kurve');
+INSERT INTO `Massnahme` VALUES (1,'BVA'),(2,'Kfz-L'),(3,'KG'),(4,'KiSi'),(5,'NS Ei'),(6,'NT'),(7,'VPU'),(8,'Waffe'),(9,'VC'),(10,'NS Sonstige'),(11,'NS Kurve'),(12,'NS Alk'),(13,'ZuSitz');
 /*!40000 ALTER TABLE `Massnahme` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -942,7 +942,7 @@ CREATE TABLE `Proband` (
   `Name` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`geborenAm`,`Name`,`Vorname`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1082,7 +1082,7 @@ CREATE TABLE `Tel` (
 
 LOCK TABLES `Tel` WRITE;
 /*!40000 ALTER TABLE `Tel` DISABLE KEYS */;
-INSERT INTO `Tel` VALUES (1,'+43664/4145795'),(2,'+4366052011'),(3,'+436606075293'),(4,'+436764487996'),(5,'+436604842818');
+INSERT INTO `Tel` VALUES (2,'+4366052011'),(3,'+436606075293'),(4,'+436764487996'),(5,'+436604842818');
 /*!40000 ALTER TABLE `Tel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1335,4 +1335,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-12 12:46:45
+-- Dump completed on 2020-04-16 15:13:10
