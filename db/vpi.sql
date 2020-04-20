@@ -940,6 +940,11 @@ CREATE TABLE `Proband` (
   `geborenAm` date DEFAULT '1901-01-01',
   `Vorname` varchar(40) DEFAULT NULL,
   `Name` varchar(80) DEFAULT NULL,
+  `Promille` varchar(40) DEFAULT NULL,
+  `AZ` varchar(40) DEFAULT NULL,
+  `wdhAuffaellig` enum('ja','nein') NOT NULL DEFAULT 'nein',
+  `ProbeFS` enum('ja','nein') NOT NULL DEFAULT 'nein',
+  `Kommentar` text DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`geborenAm`,`Name`,`Vorname`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
@@ -951,7 +956,7 @@ CREATE TABLE `Proband` (
 
 LOCK TABLES `Proband` WRITE;
 /*!40000 ALTER TABLE `Proband` DISABLE KEYS */;
-INSERT INTO `Proband` VALUES (4,'1997-06-09','Mert','Sarac'),(5,'1999-11-20','Rakan','Alobaed'),(6,'2001-02-20','Denise','Pargger'),(7,'1994-03-01','Dominik','Hochreiter'),(8,'1969-02-02','Franz','Zachbauer'),(9,'0199-02-12','Daniel','Staiger');
+INSERT INTO `Proband` VALUES (4,'1997-06-09','Mert','Sarac',NULL,NULL,'nein','nein',NULL),(5,'1999-11-20','Rakan','Alobaed',NULL,NULL,'nein','nein',NULL),(6,'2001-02-20','Denise','Pargger',NULL,NULL,'nein','nein',NULL),(7,'1994-03-01','Dominik','Hochreiter',NULL,NULL,'nein','nein',NULL),(8,'1969-02-02','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL),(9,'0199-02-12','Daniel','Staiger',NULL,NULL,'nein','nein',NULL);
 /*!40000 ALTER TABLE `Proband` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -980,6 +985,32 @@ LOCK TABLES `ProbandMassnahme` WRITE;
 /*!40000 ALTER TABLE `ProbandMassnahme` DISABLE KEYS */;
 INSERT INTO `ProbandMassnahme` VALUES (1,4,9,'nein','nein'),(2,5,10,'nein','nein'),(3,6,11,'nein','nein'),(4,7,7,'nein','nein'),(5,9,11,'nein','nein');
 /*!40000 ALTER TABLE `ProbandMassnahme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ProbandTel`
+--
+
+DROP TABLE IF EXISTS `ProbandTel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProbandTel` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProbandID` int(11) NOT NULL DEFAULT 1,
+  `TelID` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`TelID`,`ProbandID`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ProbandTel`
+--
+
+LOCK TABLES `ProbandTel` WRITE;
+/*!40000 ALTER TABLE `ProbandTel` DISABLE KEYS */;
+INSERT INTO `ProbandTel` VALUES (7,5,3),(6,4,2),(8,6,4),(9,8,5);
+/*!40000 ALTER TABLE `ProbandTel` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1109,32 +1140,6 @@ CREATE TABLE `TelKlient` (
 LOCK TABLES `TelKlient` WRITE;
 /*!40000 ALTER TABLE `TelKlient` DISABLE KEYS */;
 /*!40000 ALTER TABLE `TelKlient` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `TelProband`
---
-
-DROP TABLE IF EXISTS `TelProband`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `TelProband` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `TelID` int(11) NOT NULL DEFAULT 1,
-  `ProbandID` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`TelID`,`ProbandID`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `TelProband`
---
-
-LOCK TABLES `TelProband` WRITE;
-/*!40000 ALTER TABLE `TelProband` DISABLE KEYS */;
-INSERT INTO `TelProband` VALUES (7,3,5),(6,2,4),(8,4,6),(9,5,8);
-/*!40000 ALTER TABLE `TelProband` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1335,4 +1340,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-16 15:13:10
+-- Dump completed on 2020-04-20 20:18:30
