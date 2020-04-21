@@ -1,5 +1,3 @@
-DROP TABLE BundeslandTrainer;
-DROP TABLE TelProband;
 DROP TABLE Leistung;
 DROP TABLE TrainerOrtLeistung;
 DROP TABLE PersonKlient;
