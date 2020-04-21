@@ -220,6 +220,32 @@ INSERT INTO `Kategorie` VALUES (4,'Alkohol'),(8,''),(6,'Kurve'),(7,'Sonstige');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Klient`
+--
+
+DROP TABLE IF EXISTS `Klient`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Klient` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `geborenAm` date DEFAULT '1901-01-01',
+  `Geschlecht` enum('weiblich','maennlich') NOT NULL DEFAULT 'weiblich',
+  `Name` varchar(80) DEFAULT NULL,
+  `Vorname` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Klient`
+--
+
+LOCK TABLES `Klient` WRITE;
+/*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `KlientVS`
 --
 
@@ -606,7 +632,7 @@ CREATE TABLE `ProbandMail` (
   `MailID` int(11) NOT NULL DEFAULT 1,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`MailID`,`ProbandID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -615,7 +641,7 @@ CREATE TABLE `ProbandMail` (
 
 LOCK TABLES `ProbandMail` WRITE;
 /*!40000 ALTER TABLE `ProbandMail` DISABLE KEYS */;
-INSERT INTO `ProbandMail` VALUES (1,4,1),(2,6,2),(4,8,4),(5,9,5);
+INSERT INTO `ProbandMail` VALUES (1,4,1),(2,6,2),(6,7,3),(4,8,4),(5,9,5);
 /*!40000 ALTER TABLE `ProbandMail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -948,4 +974,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-21 20:02:32
+-- Dump completed on 2020-04-21 20:19:44
