@@ -1,0 +1,2 @@
+RENAME TABLE MailProband TO ProbandMail;
+ALTER TABLE ProbandMail MODIFY COLUMN MailID int(11) NOT NULL DEFAULT 1 AFTER ProbandID;
