@@ -721,7 +721,7 @@ CREATE TABLE `ProbandTermin` (
 
 LOCK TABLES `ProbandTermin` WRITE;
 /*!40000 ALTER TABLE `ProbandTermin` DISABLE KEYS */;
-INSERT INTO `ProbandTermin` VALUES (1,30,1,'nein'),(2,31,2,'nein'),(3,32,4,'nein'),(4,31,5,'nein');
+INSERT INTO `ProbandTermin` VALUES (1,30,1,'nein'),(2,31,2,'ja'),(3,32,4,'nein'),(4,31,5,'nein');
 /*!40000 ALTER TABLE `ProbandTermin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -845,7 +845,6 @@ CREATE TABLE `Termin` (
   `VSID` int(11) NOT NULL DEFAULT 1,
   `Dauer` enum('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96') NOT NULL,
   `Kuerzel` varchar(20) DEFAULT '',
-  `VM` enum('ja','nein') NOT NULL DEFAULT 'ja',
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -856,7 +855,7 @@ CREATE TABLE `Termin` (
 
 LOCK TABLES `Termin` WRITE;
 /*!40000 ALTER TABLE `Termin` DISABLE KEYS */;
-INSERT INTO `Termin` VALUES (31,1,8,1,1,20,18,6,41,'12',' S','ja'),(30,3,8,18,10,20,17,5,57,'12','Malt','ja'),(28,2,8,3,9,20,15,1,41,'28','L','nein'),(29,2,8,1,4,20,15,3,69,'4',' S.UE','ja'),(27,1,8,3,3,20,17,3,69,'12','L22','ja'),(26,1,8,3,2,20,16,6,37,'12','L18','ja'),(32,2,8,2,4,20,21,1,37,'4',' VB.UE','ja');
+INSERT INTO `Termin` VALUES (31,1,8,1,1,20,18,6,41,'12',' S'),(30,3,8,18,10,20,17,5,57,'12','Malt'),(28,2,8,3,9,20,15,1,41,'28','L'),(29,2,8,1,4,20,15,3,69,'4',' S.UE'),(27,1,8,3,3,20,17,3,69,'12','L22'),(26,1,8,3,2,20,16,6,37,'12','L18'),(32,2,8,2,4,20,21,1,37,'4',' VB.UE');
 /*!40000 ALTER TABLE `Termin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -991,6 +990,32 @@ INSERT INTO `VS` VALUES (1,'00:00:00'),(2,'00:15:00'),(3,'00:30:00'),(4,'00:45:0
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Vormerkung`
+--
+
+DROP TABLE IF EXISTS `Vormerkung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Vormerkung` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RegionID` int(11) NOT NULL DEFAULT 1,
+  `ProbandAdresseID` int(11) NOT NULL DEFAULT 1,
+  `Wunschtermin` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`RegionID`,`ProbandAdresseID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Vormerkung`
+--
+
+LOCK TABLES `Vormerkung` WRITE;
+/*!40000 ALTER TABLE `Vormerkung` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Vormerkung` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Zeitstempel`
 --
 
@@ -1023,4 +1048,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-26 13:50:07
+-- Dump completed on 2020-05-02 20:21:37
