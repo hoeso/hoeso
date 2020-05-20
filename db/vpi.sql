@@ -751,30 +751,6 @@ INSERT INTO `Recht` VALUES (1,'nicht bevollmÃ¤chtigt'),(2,'informationsberecht
 UNLOCK TABLES;
 
 --
--- Table structure for table `Region`
---
-
-DROP TABLE IF EXISTS `Region`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Region` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Region` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`Region`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Region`
---
-
-LOCK TABLES `Region` WRITE;
-/*!40000 ALTER TABLE `Region` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Region` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Tag`
 --
 
@@ -940,31 +916,6 @@ INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,
 UNLOCK TABLES;
 
 --
--- Table structure for table `Umkreis`
---
-
-DROP TABLE IF EXISTS `Umkreis`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Umkreis` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `RegionID` int(11) NOT NULL DEFAULT 1,
-  `OrtID` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`RegionID`,`OrtID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Umkreis`
---
-
-LOCK TABLES `Umkreis` WRITE;
-/*!40000 ALTER TABLE `Umkreis` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Umkreis` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `VS`
 --
 
@@ -998,11 +949,12 @@ DROP TABLE IF EXISTS `Vormerkung`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Vormerkung` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `RegionID` int(11) NOT NULL DEFAULT 1,
-  `ProbandAdresseID` int(11) NOT NULL DEFAULT 1,
-  `Wunschtermin` varchar(120) DEFAULT NULL,
+  `OrtID` int(11) NOT NULL DEFAULT 1,
+  `ProbandMassnahmeID` int(11) NOT NULL DEFAULT 1,
+  `Frist` date DEFAULT NULL,
+  `Kommentar` text DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`RegionID`,`ProbandAdresseID`)
+  UNIQUE KEY `IDX` (`OrtID`,`ProbandMassnahmeID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1048,4 +1000,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-02 20:21:37
+-- Dump completed on 2020-05-15 17:08:42
