@@ -673,6 +673,31 @@ INSERT INTO `ProbandMassnahme` VALUES (1,4,9,'nein','nein'),(2,5,10,'nein','nein
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ProbandMassnahmeZahlung`
+--
+
+DROP TABLE IF EXISTS `ProbandMassnahmeZahlung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProbandMassnahmeZahlung` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProbandMassnahmeID` int(11) NOT NULL DEFAULT 1,
+  `Betrag` decimal(8,2) NOT NULL DEFAULT 0.00,
+  `Datum` date DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ProbandMassnahmeZahlung`
+--
+
+LOCK TABLES `ProbandMassnahmeZahlung` WRITE;
+/*!40000 ALTER TABLE `ProbandMassnahmeZahlung` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProbandMassnahmeZahlung` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ProbandTel`
 --
 
@@ -846,6 +871,7 @@ CREATE TABLE `Terminart` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Terminart` varchar(255) DEFAULT NULL,
   `Kuerzel` varchar(20) DEFAULT '.UE',
+  `wdh` enum('0','1','2','3','4','5','6','7','8','9') NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Terminart`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -857,7 +883,7 @@ CREATE TABLE `Terminart` (
 
 LOCK TABLES `Terminart` WRITE;
 /*!40000 ALTER TABLE `Terminart` DISABLE KEYS */;
-INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs',''),(2,'Untersuchung/Einzeltermin','.UE'),(3,'Verkehrscoaching Sbg','');
+INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs','','3'),(2,'Untersuchung/Einzeltermin','.UE','0'),(3,'Verkehrscoaching Sbg','','0');
 /*!40000 ALTER TABLE `Terminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1000,4 +1026,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-22 14:49:44
+-- Dump completed on 2020-05-22 15:09:46
