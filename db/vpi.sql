@@ -521,7 +521,7 @@ CREATE TABLE `Ort` (
   `Kuerzel` varchar(20) DEFAULT 'ST',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`BundeslandID`,`Kursort`,`PLZ`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -530,7 +530,7 @@ CREATE TABLE `Ort` (
 
 LOCK TABLES `Ort` WRITE;
 /*!40000 ALTER TABLE `Ort` DISABLE KEYS */;
-INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020','S'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840','VB'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020','L'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560','KI'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400','ST'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 ','RI'),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 ','BdI'),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 ','BR'),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 ','WE'),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310','MO'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 ','JO'),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550','RA'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700','ZE'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760','SA'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 ','TA'),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 ','EF'),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121','OS'),(18,2,'Malteser','Salzburg','Imbergstr','5020','');
+INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020','S'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840','VB'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020','L'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560','KI'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400','ST'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 ','RI'),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 ','BdI'),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 ','BR'),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 ','WE'),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310','MO'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 ','JO'),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550','RA'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700','ZE'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760','SA'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 ','TA'),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 ','EF'),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121','OS'),(18,2,'Malteser','Salzburg','Imbergstr','5020',''),(19,1,'Bezirksbauernkammer Freistadt','Freistadt','Kammerstraße 4','4240','FR'),(20,1,'Fahrschule Mayr','Gallneukirchen','Gaisbacherstraße 22','4210','GA'),(21,1,'Bezirksbauernkammer Grieskirchen','Grieskirchen','Manglburg 2','4710','GR'),(22,1,'Kolpinghaus','Gmunden','Marktplatz 13','4810','GM'),(23,1,'Bezirksbauernkammer Perg','Perg','Fadingerstraße 13','4320','PE'),(24,1,'Praxis Dr. Stöbich','Rohrbach','Stadtplatz 16','4150','RO'),(25,1,'Fahrschule Clarissa','Schärding','Denisgasse 8','4780','SC');
 /*!40000 ALTER TABLE `Ort` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -911,7 +911,7 @@ CREATE TABLE `TrainerOrtTerminart` (
 
 LOCK TABLES `TrainerOrtTerminart` WRITE;
 /*!40000 ALTER TABLE `TrainerOrtTerminart` DISABLE KEYS */;
-INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1),(18,4,10,2),(19,4,2,2),(20,4,13,2),(21,4,14,2),(22,4,12,2),(23,4,1,2),(24,4,11,2),(25,7,5,2),(26,3,3,2),(27,10,1,3),(29,10,18,3);
+INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1),(18,4,10,2),(19,4,2,2),(20,4,13,2),(21,4,14,2),(22,4,12,2),(23,4,1,2),(24,4,11,2),(25,7,5,2),(26,3,3,2),(29,10,18,3);
 /*!40000 ALTER TABLE `TrainerOrtTerminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1000,4 +1000,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-15 17:08:42
+-- Dump completed on 2020-05-22 14:49:44
