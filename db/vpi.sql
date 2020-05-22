@@ -570,6 +570,7 @@ DROP TABLE IF EXISTS `Proband`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Proband` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `OrtBehoerdeID` int(11) NOT NULL DEFAULT 1,
   `geborenAm` date DEFAULT '1901-01-01',
   `Vorname` varchar(40) DEFAULT NULL,
   `Name` varchar(80) DEFAULT NULL,
@@ -578,6 +579,7 @@ CREATE TABLE `Proband` (
   `wdhAuffaellig` enum('ja','nein') NOT NULL DEFAULT 'nein',
   `ProbeFS` enum('ja','nein') NOT NULL DEFAULT 'nein',
   `Kommentar` text DEFAULT NULL,
+  `Strasse` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`geborenAm`,`Name`,`Vorname`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
@@ -589,7 +591,7 @@ CREATE TABLE `Proband` (
 
 LOCK TABLES `Proband` WRITE;
 /*!40000 ALTER TABLE `Proband` DISABLE KEYS */;
-INSERT INTO `Proband` VALUES (4,'1997-06-09','Mert','Sarac',NULL,NULL,'nein','nein',NULL),(5,'1999-11-20','Rakan','Alobaed',NULL,NULL,'nein','nein',NULL),(6,'2001-02-20','Denise','Pargger',NULL,NULL,'nein','nein',NULL),(7,'1994-03-01','Dominik','Hochreiter',NULL,NULL,'nein','nein',NULL),(8,'1969-02-02','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL),(9,'0199-02-12','Daniel','Staiger',NULL,NULL,'nein','nein',NULL);
+INSERT INTO `Proband` VALUES (4,1,'1997-06-09','Mert','Sarac','','','nein','nein','','Rabenbauernweg 28a'),(5,1,'1999-11-20','Rakan','Alobaed','','','nein','nein','','Elsa-Brandström-Str 2'),(6,2,'2001-02-20','Denise','Pargger','','','nein','nein','','Hackerweg 21'),(7,3,'1994-03-01','Dominik','Hochreiter','','','nein','nein','','Promenade 16'),(8,1,'1969-02-02','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL,NULL),(9,4,'0199-02-12','Daniel','Staiger','','','nein','nein','','Georgenberg 109');
 /*!40000 ALTER TABLE `Proband` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -615,7 +617,7 @@ CREATE TABLE `ProbandAdresse` (
 
 LOCK TABLES `ProbandAdresse` WRITE;
 /*!40000 ALTER TABLE `ProbandAdresse` DISABLE KEYS */;
-INSERT INTO `ProbandAdresse` VALUES (1,5,2),(2,7,1),(3,4,3),(4,6,4),(5,9,6);
+INSERT INTO `ProbandAdresse` VALUES (3,4,3);
 /*!40000 ALTER TABLE `ProbandAdresse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1026,4 +1028,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-22 15:09:46
+-- Dump completed on 2020-05-22 15:54:48
