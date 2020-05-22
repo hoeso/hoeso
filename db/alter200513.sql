@@ -1,0 +1,2 @@
+ALTER TABLE Proband ADD OrtBehoerdeID int(11) NOT NULL DEFAULT 1 AFTER ID;
+ALTER TABLE Proband ADD Strasse varchar(120) DEFAULT NULL;
