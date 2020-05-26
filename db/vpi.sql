@@ -521,7 +521,7 @@ CREATE TABLE `Ort` (
   `Kuerzel` varchar(20) DEFAULT 'ST',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`BundeslandID`,`Kursort`,`PLZ`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -530,7 +530,7 @@ CREATE TABLE `Ort` (
 
 LOCK TABLES `Ort` WRITE;
 /*!40000 ALTER TABLE `Ort` DISABLE KEYS */;
-INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020','S'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840','VB'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020','L'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560','KI'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400','ST'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 ','RI'),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 ','BdI'),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 ','BR'),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 ','WE'),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310','MO'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 ','JO'),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550','RA'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700','ZE'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760','SA'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 ','TA'),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 ','EF'),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121','OS'),(18,2,'Malteser','Salzburg','Imbergstr','5020','');
+INSERT INTO `Ort` VALUES (1,2,'INFAR Landesstelle Salzburg','Salzburg','Karl-Wurmb-Str. 3','5020','S'),(2,1,'Seminarhaus St. Klara','Vöcklabruck','Salzburger Straße 20','4840','VB'),(3,1,'INFAR Landesstelle Oberösterreich','Linz','Weingartshofstrasse 37-39','4020','L'),(4,1,'Fahrschule Staudinger','Kirchdorf','Sengsschmiedstraße 8','4560','KI'),(5,1,'Fahrschule Staudinger','Steyr','Pachergasse 12','4400','ST'),(6,1,'Fahrschule Yo-Yo','Ried im Innkreis','Rainerstraße 8','4910 ','RI'),(7,1,'Fahrschule Rastl','Bad Ischl','Gassnerweg 1b','4820 ','BdI'),(8,1,'Bezirksbauernkammer','Braunau','Hammersteinplatz 5','5280 ','BR'),(9,1,'Fahrschule startup@-kölblinger','Wels','Herrengasse 1 / Roseggerstraße 2','4600 ','WE'),(10,1,'Fahrschule Rastl','Mondsee','Viktor-Kaplan-Straße 2','5310','MO'),(11,2,'Fahrschule Zebra','St. Johann im Pongau','Industriestraße 9','5600 ','JO'),(12,2,'Fahrschule Pewny','Radstadt','Hofhaimergasse 13','5550','RA'),(13,2,'Fahrschule Zebra','Zell am See','Brucker Bundesstraße 11','5700','ZE'),(14,2,'Fahrschule Zebra','Saalfelden','Mittergasse 23','5760','SA'),(15,2,'Rotes Kreuz ','Tamsweg','Josef-Ehrenreich-Straße 1','5580 ','TA'),(16,1,'Gastzimmer Eferding','Eferding','Schmiedstraße 11','4070 ','EF'),(17,1,'Fahrschule Scharinger','Ostermiething','Gewerbegebiet 2','5121','OS'),(18,2,'Malteser','Salzburg','Imbergstr','5020',''),(19,1,'Bezirksbauernkammer Freistadt','Freistadt','Kammerstraße 4','4240','FR'),(20,1,'Fahrschule Mayr','Gallneukirchen','Gaisbacherstraße 22','4210','GA'),(21,1,'Bezirksbauernkammer Grieskirchen','Grieskirchen','Manglburg 2','4710','GR'),(22,1,'Kolpinghaus','Gmunden','Marktplatz 13','4810','GM'),(23,1,'Bezirksbauernkammer Perg','Perg','Fadingerstraße 13','4320','PE'),(24,1,'Praxis Dr. Stöbich','Rohrbach','Stadtplatz 16','4150','RO'),(25,1,'Fahrschule Clarissa','Schärding','Denisgasse 8','4780','SC');
 /*!40000 ALTER TABLE `Ort` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -570,6 +570,7 @@ DROP TABLE IF EXISTS `Proband`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Proband` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `OrtBehoerdeID` int(11) NOT NULL DEFAULT 1,
   `geborenAm` date DEFAULT '1901-01-01',
   `Vorname` varchar(40) DEFAULT NULL,
   `Name` varchar(80) DEFAULT NULL,
@@ -578,6 +579,7 @@ CREATE TABLE `Proband` (
   `wdhAuffaellig` enum('ja','nein') NOT NULL DEFAULT 'nein',
   `ProbeFS` enum('ja','nein') NOT NULL DEFAULT 'nein',
   `Kommentar` text DEFAULT NULL,
+  `Strasse` varchar(120) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`geborenAm`,`Name`,`Vorname`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
@@ -589,7 +591,7 @@ CREATE TABLE `Proband` (
 
 LOCK TABLES `Proband` WRITE;
 /*!40000 ALTER TABLE `Proband` DISABLE KEYS */;
-INSERT INTO `Proband` VALUES (4,'1997-06-09','Mert','Sarac',NULL,NULL,'nein','nein',NULL),(5,'1999-11-20','Rakan','Alobaed',NULL,NULL,'nein','nein',NULL),(6,'2001-02-20','Denise','Pargger',NULL,NULL,'nein','nein',NULL),(7,'1994-03-01','Dominik','Hochreiter',NULL,NULL,'nein','nein',NULL),(8,'1969-02-02','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL),(9,'0199-02-12','Daniel','Staiger',NULL,NULL,'nein','nein',NULL);
+INSERT INTO `Proband` VALUES (4,1,'1997-06-09','Mert','Sarac','','','nein','nein','','Rabenbauernweg 28a'),(5,1,'1999-11-20','Rakan','Alobaed','','','nein','nein','','Elsa-Brandström-Str 2'),(6,2,'2001-02-20','Denise','Pargger','','','nein','nein','','Hackerweg 21'),(7,3,'1994-03-01','Dominik','Hochreiter','','','nein','nein','','Promenade 16'),(8,1,'1969-02-02','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL,NULL),(9,4,'0199-02-12','Daniel','Staiger','','','nein','nein','','Georgenberg 109');
 /*!40000 ALTER TABLE `Proband` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -615,7 +617,7 @@ CREATE TABLE `ProbandAdresse` (
 
 LOCK TABLES `ProbandAdresse` WRITE;
 /*!40000 ALTER TABLE `ProbandAdresse` DISABLE KEYS */;
-INSERT INTO `ProbandAdresse` VALUES (1,5,2),(2,7,1),(3,4,3),(4,6,4),(5,9,6);
+INSERT INTO `ProbandAdresse` VALUES (3,4,3);
 /*!40000 ALTER TABLE `ProbandAdresse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -670,6 +672,31 @@ LOCK TABLES `ProbandMassnahme` WRITE;
 /*!40000 ALTER TABLE `ProbandMassnahme` DISABLE KEYS */;
 INSERT INTO `ProbandMassnahme` VALUES (1,4,9,'nein','nein'),(2,5,10,'nein','nein'),(3,6,11,'nein','nein'),(4,7,7,'nein','nein'),(5,9,11,'nein','nein');
 /*!40000 ALTER TABLE `ProbandMassnahme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ProbandMassnahmeZahlung`
+--
+
+DROP TABLE IF EXISTS `ProbandMassnahmeZahlung`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProbandMassnahmeZahlung` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProbandMassnahmeID` int(11) NOT NULL DEFAULT 1,
+  `Betrag` decimal(8,2) NOT NULL DEFAULT 0.00,
+  `Datum` date DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ProbandMassnahmeZahlung`
+--
+
+LOCK TABLES `ProbandMassnahmeZahlung` WRITE;
+/*!40000 ALTER TABLE `ProbandMassnahmeZahlung` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ProbandMassnahmeZahlung` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -748,30 +775,6 @@ LOCK TABLES `Recht` WRITE;
 /*!40000 ALTER TABLE `Recht` DISABLE KEYS */;
 INSERT INTO `Recht` VALUES (1,'nicht bevollmÃ¤chtigt'),(2,'informationsberechtigt'),(3,'Entbindung Schweigepflicht');
 /*!40000 ALTER TABLE `Recht` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Region`
---
-
-DROP TABLE IF EXISTS `Region`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Region` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Region` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`Region`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Region`
---
-
-LOCK TABLES `Region` WRITE;
-/*!40000 ALTER TABLE `Region` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Region` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -870,6 +873,7 @@ CREATE TABLE `Terminart` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Terminart` varchar(255) DEFAULT NULL,
   `Kuerzel` varchar(20) DEFAULT '.UE',
+  `wdh` enum('0','1','2','3','4','5','6','7','8','9') NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Terminart`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -881,7 +885,7 @@ CREATE TABLE `Terminart` (
 
 LOCK TABLES `Terminart` WRITE;
 /*!40000 ALTER TABLE `Terminart` DISABLE KEYS */;
-INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs',''),(2,'Untersuchung/Einzeltermin','.UE'),(3,'Verkehrscoaching Sbg','');
+INSERT INTO `Terminart` VALUES (1,'Nachschulung Kurs','','3'),(2,'Untersuchung/Einzeltermin','.UE','0'),(3,'Verkehrscoaching Sbg','','0');
 /*!40000 ALTER TABLE `Terminart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -935,33 +939,8 @@ CREATE TABLE `TrainerOrtTerminart` (
 
 LOCK TABLES `TrainerOrtTerminart` WRITE;
 /*!40000 ALTER TABLE `TrainerOrtTerminart` DISABLE KEYS */;
-INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1),(18,4,10,2),(19,4,2,2),(20,4,13,2),(21,4,14,2),(22,4,12,2),(23,4,1,2),(24,4,11,2),(25,7,5,2),(26,3,3,2),(27,10,1,3),(29,10,18,3);
+INSERT INTO `TrainerOrtTerminart` VALUES (1,2,8,1),(2,2,7,1),(3,2,10,1),(4,2,17,1),(5,2,9,1),(6,2,6,1),(7,2,16,1),(8,3,5,1),(9,3,4,1),(10,3,3,1),(11,3,2,1),(12,5,12,1),(13,5,11,1),(14,5,14,1),(15,5,13,1),(16,5,15,1),(17,1,1,1),(18,4,10,2),(19,4,2,2),(20,4,13,2),(21,4,14,2),(22,4,12,2),(23,4,1,2),(24,4,11,2),(25,7,5,2),(26,3,3,2),(29,10,18,3);
 /*!40000 ALTER TABLE `TrainerOrtTerminart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Umkreis`
---
-
-DROP TABLE IF EXISTS `Umkreis`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Umkreis` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `RegionID` int(11) NOT NULL DEFAULT 1,
-  `OrtID` int(11) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`RegionID`,`OrtID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Umkreis`
---
-
-LOCK TABLES `Umkreis` WRITE;
-/*!40000 ALTER TABLE `Umkreis` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Umkreis` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -998,11 +977,12 @@ DROP TABLE IF EXISTS `Vormerkung`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Vormerkung` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `RegionID` int(11) NOT NULL DEFAULT 1,
-  `ProbandAdresseID` int(11) NOT NULL DEFAULT 1,
-  `Wunschtermin` varchar(120) DEFAULT NULL,
+  `OrtID` int(11) NOT NULL DEFAULT 1,
+  `ProbandMassnahmeID` int(11) NOT NULL DEFAULT 1,
+  `Frist` date DEFAULT NULL,
+  `Kommentar` text DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `IDX` (`RegionID`,`ProbandAdresseID`)
+  UNIQUE KEY `IDX` (`OrtID`,`ProbandMassnahmeID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1048,4 +1028,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-02 20:21:37
+-- Dump completed on 2020-05-22 15:54:48
