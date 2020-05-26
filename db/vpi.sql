@@ -102,6 +102,14 @@ DROP TABLE IF EXISTS `Bundesland`;
 CREATE TABLE `Bundesland` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Bundesland` varchar(40) DEFAULT NULL,
+  `URL` varchar(40) DEFAULT NULL,
+  `wo` varchar(40) DEFAULT NULL,
+  `Strasse` varchar(40) DEFAULT NULL,
+  `PLZ` varchar(40) DEFAULT NULL,
+  `Ort` varchar(40) DEFAULT NULL,
+  `Tel` varchar(40) DEFAULT NULL,
+  `Fax` varchar(40) DEFAULT NULL,
+  `eMail` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`Bundesland`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -113,7 +121,7 @@ CREATE TABLE `Bundesland` (
 
 LOCK TABLES `Bundesland` WRITE;
 /*!40000 ALTER TABLE `Bundesland` DISABLE KEYS */;
-INSERT INTO `Bundesland` VALUES (1,'Oberösterreich'),(2,'Salzburg');
+INSERT INTO `Bundesland` VALUES (1,'Oberösterreich','www.infar.net','am Linzer Hauptbahnhof','Weingartshofstraße 37-39','A – 4020','Linz','Tel: 0732/ 65 34 97','Fax: 0662 – 87 53 64-20','office@infar.net'),(2,'Salzburg','www.infar.net','am Salzburger Hauptbahnhof','Karl-Wurmb-Straße 3','A – 5020','Salzburg','Tel: 0662 – 87 53 64','Fax: 0662 – 87 53 64-20','office@infar.net');
 /*!40000 ALTER TABLE `Bundesland` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -572,6 +580,7 @@ CREATE TABLE `Proband` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `OrtBehoerdeID` int(11) NOT NULL DEFAULT 1,
   `geborenAm` date DEFAULT '1901-01-01',
+  `Anrede` enum('Herr','Frau','') NOT NULL DEFAULT 'Herr',
   `Vorname` varchar(40) DEFAULT NULL,
   `Name` varchar(80) DEFAULT NULL,
   `Promille` varchar(40) DEFAULT NULL,
@@ -591,7 +600,7 @@ CREATE TABLE `Proband` (
 
 LOCK TABLES `Proband` WRITE;
 /*!40000 ALTER TABLE `Proband` DISABLE KEYS */;
-INSERT INTO `Proband` VALUES (4,1,'1997-06-09','Mert','Sarac','','','nein','nein','','Rabenbauernweg 28a'),(5,1,'1999-11-20','Rakan','Alobaed','','','nein','nein','','Elsa-Brandström-Str 2'),(6,2,'2001-02-20','Denise','Pargger','','','nein','nein','','Hackerweg 21'),(7,3,'1994-03-01','Dominik','Hochreiter','','','nein','nein','','Promenade 16'),(8,1,'1969-02-02','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL,NULL),(9,4,'0199-02-12','Daniel','Staiger','','','nein','nein','','Georgenberg 109');
+INSERT INTO `Proband` VALUES (4,1,'1997-06-09','Herr','Mert','Sarac','','','nein','nein','','Rabenbauernweg 28a'),(5,1,'1999-11-20','Herr','Rakan','Alobaed','','','nein','nein','','Elsa-Brandström-Str 2'),(6,2,'2001-02-20','Frau','Denise','Pargger','','','nein','nein','','Hackerweg 21'),(7,3,'1994-03-01','Herr','Dominik','Hochreiter','','','nein','nein','','Promenade 16'),(8,1,'1969-02-02','Herr','Franz','Zachbauer',NULL,NULL,'nein','nein',NULL,NULL),(9,4,'0199-02-12','Herr','Daniel','Staiger','','','nein','nein','','Georgenberg 109');
 /*!40000 ALTER TABLE `Proband` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -983,7 +992,7 @@ CREATE TABLE `Vormerkung` (
   `Kommentar` text DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `IDX` (`OrtID`,`ProbandMassnahmeID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1028,4 +1037,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-22 15:54:48
+-- Dump completed on 2020-05-26 18:58:21
