@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS `District`;
+CREATE TABLE `District` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `District` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `IDX` (`District`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO District VALUES (1, 'District No. 1');
+
+ALTER TABLE Station ADD DistrictID int(11) NOT NULL DEFAULT 1 AFTER ID;
