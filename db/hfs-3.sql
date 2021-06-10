@@ -8,4 +8,4 @@ CREATE TABLE `District` (
 
 INSERT INTO District VALUES (1, 'District No. 1');
 
-ALTER TABLE District ADD DistrictID int(11) NOT NULL DEFAULT 1 AFTER ID;
+ALTER TABLE Station ADD DistrictID int(11) NOT NULL DEFAULT 1 AFTER ID;
